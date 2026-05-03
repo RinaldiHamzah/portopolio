@@ -1,0 +1,2449 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Portfolio Rinaldi Hamzah - Machine Learning, Data Analysis, Backend Automation, dan Web Development.">
+<meta name="theme-color" content="#0d0f14">
+<meta property="og:title" content="Rinaldi Hamzah - Portfolio">
+<meta property="og:description" content="Portfolio Machine Learning, Data Analysis, Backend Automation, dan Web Development.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<title>Rinaldi Hamzah — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d0f14;
+    --bg2: #151821;
+    --bg3: #202431;
+    --accent: #5b8def;
+    --accent2: #ff7a59;
+    --accent3: #35d0ba;
+    --text: #f8fafc;
+    --text2: #aeb7c8;
+    --text3: #687287;
+    --border: rgba(91,141,239,0.22);
+    --card: rgba(255,255,255,0.03);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* NOISE OVERLAY */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.4;
+  }
+
+  /* GLOW ORBS */
+  .orb {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(120px);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .orb1 { width: 500px; height: 500px; background: rgba(91,141,239,0.13); top: -100px; left: -100px; }
+  .orb2 { width: 400px; height: 400px; background: rgba(255,122,89,0.09); bottom: 20%; right: -100px; }
+  .orb3 { width: 300px; height: 300px; background: rgba(53,208,186,0.08); top: 50%; left: 40%; }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 1.2rem 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(10,10,15,0.8);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .nav-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.1rem;
+    letter-spacing: -0.02em;
+    color: var(--text);
+  }
+
+  .nav-logo span { color: var(--accent); }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text2);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: color 0.3s;
+  }
+
+  .nav-links a:hover { color: var(--accent); }
+
+  .nav-cta {
+    background: var(--accent);
+    color: white !important;
+    padding: 0.5rem 1.2rem;
+    border-radius: 6px;
+    font-size: 0.8rem !important;
+    transition: opacity 0.3s !important;
+  }
+  .nav-cta:hover { opacity: 0.85; color: white !important; }
+
+  .mobile-nav {
+    display: none;
+    position: relative;
+  }
+
+  .mobile-nav summary {
+    width: 42px;
+    height: 42px;
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 10px;
+    background: rgba(255,255,255,0.04);
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+  }
+
+  .mobile-nav summary::-webkit-details-marker { display: none; }
+
+  .mobile-nav summary span {
+    width: 18px;
+    height: 2px;
+    border-radius: 999px;
+    background: var(--text);
+  }
+
+  .mobile-nav-menu {
+    position: absolute;
+    top: 52px;
+    right: 0;
+    min-width: 210px;
+    padding: 0.65rem;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    background: rgba(21,24,33,0.98);
+    box-shadow: 0 20px 46px rgba(0,0,0,0.38);
+    backdrop-filter: blur(18px);
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .mobile-nav-menu a {
+    color: var(--text2);
+    text-decoration: none;
+    font-size: 0.84rem;
+    font-weight: 500;
+    padding: 0.7rem 0.8rem;
+    border-radius: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .mobile-nav-menu a:hover {
+    color: var(--text);
+    background: rgba(91,141,239,0.12);
+  }
+
+  a:focus-visible,
+  button:focus-visible,
+  summary:focus-visible,
+  input:focus-visible {
+    outline: 2px solid var(--accent3);
+    outline-offset: 3px;
+  }
+
+  /* SECTIONS */
+  section { position: relative; z-index: 1; }
+
+  /* HERO */
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 6rem 4rem 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .hero-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    width: 100%;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(91,141,239,0.12);
+    border: 1px solid rgba(91,141,239,0.32);
+    color: #b8ccff;
+    font-size: 0.78rem;
+    font-weight: 500;
+    padding: 0.4rem 1rem;
+    border-radius: 100px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    animation: fadeUp 0.6s ease both;
+  }
+
+  .badge-dot {
+    width: 6px; height: 6px;
+    background: var(--accent3);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.8); }
+  }
+
+  .hero-name {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(3rem, 6vw, 5rem);
+    line-height: 1.0;
+    letter-spacing: -0.03em;
+    margin-bottom: 0.5rem;
+    animation: fadeUp 0.6s 0.1s ease both;
+  }
+
+  .hero-name .gradient-text {
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text2);
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.02em;
+    animation: fadeUp 0.6s 0.2s ease both;
+  }
+
+  .hero-title .accent { color: var(--accent3); }
+
+  .hero-desc {
+    font-size: 1rem;
+    color: var(--text2);
+    line-height: 1.8;
+    max-width: 480px;
+    margin-bottom: 2.5rem;
+    animation: fadeUp 0.6s 0.3s ease both;
+  }
+
+  .hero-btns {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    animation: fadeUp 0.6s 0.4s ease both;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: white;
+    padding: 0.8rem 2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: all 0.3s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(91,141,239,0.38); }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--text);
+    padding: 0.8rem 2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    border: 1px solid rgba(255,255,255,0.15);
+    transition: all 0.3s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .btn-outline:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+
+  .hero-stats {
+    display: flex;
+    gap: 2rem;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    animation: fadeUp 0.6s 0.5s ease both;
+  }
+
+  .stat-item { }
+
+  .stat-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--text);
+    line-height: 1;
+  }
+
+  .stat-num span { color: var(--accent); }
+
+  .stat-label {
+    font-size: 0.75rem;
+    color: var(--text3);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-top: 4px;
+  }
+
+  /* HERO VISUAL */
+  .hero-visual {
+    animation: fadeUp 0.6s 0.3s ease both;
+    position: relative;
+  }
+
+  .profile-card {
+    background: var(--bg2);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 24px;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .profile-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2), var(--accent3));
+  }
+
+  .profile-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Syne', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: white;
+    margin-bottom: 1.2rem;
+  }
+
+  .profile-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+  }
+
+  .profile-role {
+    font-size: 0.8rem;
+    color: var(--accent3);
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.05em;
+  }
+
+  .profile-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .info-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.82rem;
+    color: var(--text2);
+  }
+
+  .info-row a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .info-row a:hover {
+    color: var(--accent3);
+  }
+
+  .info-icon {
+    width: 28px; height: 28px;
+    background: rgba(91,141,239,0.12);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+
+  .tools-logo-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    align-items: center;
+    justify-content: center;
+    margin: 32px 0 40px 0;
+  }
+
+  .tool-logo {
+    height: 38px;
+    width: 38px;
+    object-fit: contain;
+    background: #222;
+    border-radius: 8px;
+    padding: 4px;
+  }
+
+  .skill-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 1.5rem;
+  }
+
+  .chip {
+    font-size: 0.72rem;
+    font-family: 'JetBrains Mono', monospace;
+    background: rgba(91,141,239,0.12);
+    border: 1px solid rgba(91,141,239,0.24);
+    color: #b8ccff;
+    padding: 4px 10px;
+    border-radius: 4px;
+    transition: all 0.3s;
+  }
+  .chip:hover { background: rgba(91,141,239,0.22); }
+  .chip.green { background: rgba(53,208,186,0.1); border-color: rgba(53,208,186,0.24); color: var(--accent3); }
+  .chip.pink { background: rgba(255,122,89,0.1); border-color: rgba(255,122,89,0.24); color: var(--accent2); }
+
+  .availability {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.8rem;
+    color: var(--accent3);
+    background: rgba(53,208,186,0.1);
+    border: 1px solid rgba(53,208,186,0.24);
+    padding: 0.6rem 1rem;
+    border-radius: 8px;
+  }
+
+  .avail-dot {
+    width: 8px; height: 8px;
+    background: var(--accent3);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+    flex-shrink: 0;
+  }
+
+  /* FLOATING CARDS */
+  .float-card {
+    position: absolute;
+    background: var(--bg2);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    padding: 0.8rem 1rem;
+    font-size: 0.78rem;
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .float-card-1 {
+    top: -20px; right: -30px;
+    animation-delay: 0s;
+  }
+
+  .float-card-2 {
+    bottom: -20px; left: -30px;
+    animation-delay: 1.5s;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+
+  .float-label { color: var(--text3); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; }
+  .float-val { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1rem; color: var(--text); margin-top: 2px; }
+  .float-val span { color: var(--accent); }
+
+  /* SECTION COMMON */
+  .section-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 6rem 4rem;
+  }
+
+  .section-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-label::before {
+    content: '';
+    width: 24px; height: 1px;
+    background: var(--accent);
+  }
+
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+  }
+
+  .section-subtitle {
+    font-size: 1rem;
+    color: var(--text2);
+    max-width: 540px;
+    line-height: 1.8;
+    margin-bottom: 3rem;
+  }
+
+  /* SKILLS */
+  #skills { background: var(--bg); }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .skill-card {
+    background: var(--card);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 16px;
+    padding: 1.8rem;
+    transition: all 0.4s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .skill-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--card-accent, var(--accent)), transparent);
+    opacity: 0;
+    transition: opacity 0.4s;
+  }
+
+  .skill-card:hover { border-color: rgba(255,255,255,0.12); transform: translateY(-4px); }
+  .skill-card:hover::before { opacity: 1; }
+
+  .skill-card-icon {
+    width: 44px; height: 44px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    margin-bottom: 1.2rem;
+  }
+
+  .skill-card-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    margin-bottom: 0.8rem;
+    letter-spacing: -0.01em;
+  }
+
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .skill-tag {
+    font-size: 0.72rem;
+    font-family: 'JetBrains Mono', monospace;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    color: var(--text2);
+    padding: 3px 8px;
+    border-radius: 4px;
+  }
+
+  /* PROJECTS */
+  #projects { background: var(--bg); }
+
+  .divider-line {
+    width: 100%; height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.06), transparent);
+    margin: 0;
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .project-card {
+    background: var(--bg2);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 20px;
+    padding: 2rem;
+    transition: all 0.4s;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .project-card:first-child {
+    grid-column: span 2;
+    background: linear-gradient(135deg, rgba(91,141,239,0.1) 0%, rgba(255,122,89,0.07) 100%);
+    border-color: rgba(91,141,239,0.24);
+  }
+
+  .project-card:first-child .project-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: start;
+  }
+
+  .project-card:hover { transform: translateY(-4px); border-color: rgba(255,255,255,0.12); }
+
+  .project-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.2rem;
+  }
+
+  .project-period {
+    font-size: 0.72rem;
+    color: var(--text3);
+    font-family: 'JetBrains Mono', monospace;
+    background: rgba(255,255,255,0.04);
+    padding: 4px 10px;
+    border-radius: 4px;
+  }
+
+  .project-role {
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .project-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.2rem;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.8rem;
+    line-height: 1.2;
+  }
+
+  .project-desc {
+    font-size: 0.88rem;
+    color: var(--text2);
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    flex: 1;
+  }
+
+  .project-highlights {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .project-highlights li {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 0.83rem;
+    color: var(--text2);
+    line-height: 1.6;
+  }
+
+  .project-highlights li::before {
+    content: '→';
+    color: var(--accent);
+    flex-shrink: 0;
+    margin-top: 1px;
+    font-size: 0.8rem;
+  }
+
+  .project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: auto;
+  }
+
+  .tech-tag {
+    font-size: 0.7rem;
+    font-family: 'JetBrains Mono', monospace;
+    background: rgba(91,141,239,0.1);
+    border: 1px solid rgba(91,141,239,0.18);
+    color: #b8ccff;
+    padding: 3px 9px;
+    border-radius: 4px;
+  }
+
+  .tech-tag.green { background: rgba(53,208,186,0.1); border-color: rgba(53,208,186,0.18); color: var(--accent3); }
+  .tech-tag.pink { background: rgba(255,122,89,0.1); border-color: rgba(255,122,89,0.18); color: var(--accent2); }
+
+  /* PROJECT VISUAL */
+  .project-visual {
+    background: var(--bg3);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 12px;
+    padding: 1.5rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+  }
+
+  .code-line { color: var(--text3); margin-bottom: 4px; line-height: 1.7; }
+  .code-line .kw { color: #b8ccff; }
+  .code-line .fn { color: var(--accent3); }
+  .code-line .str { color: var(--accent2); }
+  .code-line .num { color: #f6c453; }
+  .code-line .cm { color: var(--text3); opacity: 0.5; }
+
+  /* EXPERIENCE */
+  #experience { background: var(--bg); }
+
+  .exp-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .exp-nav {
+    position: sticky;
+    top: 100px;
+  }
+
+  .exp-nav-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0.8rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    color: var(--text3);
+    font-size: 0.85rem;
+    font-weight: 500;
+    border: 1px solid transparent;
+    margin-bottom: 0.5rem;
+  }
+
+  .exp-nav-item.active,
+  .exp-nav-item:hover {
+    background: rgba(91,141,239,0.1);
+    border-color: rgba(91,141,239,0.24);
+    color: var(--text);
+  }
+
+  .exp-nav-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--text3);
+    flex-shrink: 0;
+    transition: background 0.3s;
+  }
+
+  .exp-nav-item.active .exp-nav-dot,
+  .exp-nav-item:hover .exp-nav-dot { background: var(--accent); }
+
+  .exp-entries { display: flex; flex-direction: column; gap: 2.5rem; }
+
+  .exp-entry {
+    background: var(--bg2);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 16px;
+    padding: 2rem;
+    position: relative;
+    transition: border-color 0.3s;
+  }
+
+  .exp-entry:hover { border-color: rgba(91,141,239,0.24); }
+
+  .exp-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .exp-company {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+  }
+
+  .exp-pos {
+    font-size: 0.82rem;
+    color: var(--accent3);
+    font-weight: 500;
+    margin-top: 3px;
+  }
+
+  .exp-period {
+    font-size: 0.72rem;
+    color: var(--text3);
+    font-family: 'JetBrains Mono', monospace;
+    background: rgba(255,255,255,0.04);
+    padding: 4px 10px;
+    border-radius: 4px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .exp-points { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+
+  .exp-points li {
+    display: flex;
+    gap: 10px;
+    font-size: 0.85rem;
+    color: var(--text2);
+    line-height: 1.7;
+  }
+
+  .exp-points li::before {
+    content: '▸';
+    color: var(--accent);
+    flex-shrink: 0;
+    margin-top: 1px;
+    font-size: 0.75rem;
+  }
+
+  /* EDUCATION */
+  #education { background: var(--bg); }
+
+  .edu-card {
+    background: linear-gradient(135deg, rgba(91,141,239,0.08), rgba(53,208,186,0.04));
+    border: 1px solid rgba(91,141,239,0.24);
+    border-radius: 20px;
+    padding: 2.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  .edu-icon {
+    width: 56px; height: 56px;
+    background: rgba(91,141,239,0.16);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    margin-bottom: 1.5rem;
+  }
+
+  .edu-degree {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+  }
+
+  .edu-school {
+    font-size: 0.9rem;
+    color: var(--accent3);
+    font-weight: 500;
+    margin-bottom: 1rem;
+  }
+
+  .edu-details {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .edu-detail {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.82rem;
+    color: var(--text2);
+  }
+
+  .edu-detail-icon { font-size: 14px; }
+
+  .edu-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .edu-stat-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 12px;
+    padding: 1.2rem;
+    text-align: center;
+  }
+
+  .edu-stat-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 2rem;
+    font-weight: 800;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .edu-stat-label {
+    font-size: 0.72rem;
+    color: var(--text3);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .lang-badges {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    grid-column: span 2;
+    margin-top: 1rem;
+  }
+
+  .lang-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-size: 0.85rem;
+  }
+
+  /* CONTACT */
+  #contact {
+    background: var(--bg);
+    text-align: center;
+  }
+
+  .contact-card {
+    background: linear-gradient(135deg, var(--bg2), var(--bg3));
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 24px;
+    padding: 4rem;
+    max-width: 700px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .contact-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2), var(--accent3));
+  }
+
+  .contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+  }
+
+  .contact-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 52px;
+    height: 52px;
+    padding: 0;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 500;
+    transition: all 0.3s;
+    border: 1px solid rgba(255,255,255,0.1);
+    color: var(--text2);
+    background: rgba(255,255,255,0.03);
+  }
+
+  .contact-link svg {
+    width: 22px;
+    height: 22px;
+    fill: currentColor;
+  }
+
+  .contact-link:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+  .contact-link.primary { background: var(--accent); color: white; border-color: var(--accent); }
+  .contact-link.primary:hover { opacity: 0.9; color: white; }
+
+  /* AI ASSISTANT */
+  .ai-assistant {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    z-index: 120;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  .ai-toggle {
+    width: 62px;
+    height: 62px;
+    border: 1px solid rgba(91,141,239,0.35);
+    border-radius: 18px;
+    background: linear-gradient(135deg, var(--accent), var(--accent3));
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 16px 38px rgba(0,0,0,0.35), 0 8px 24px rgba(91,141,239,0.28);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .ai-toggle:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 20px 44px rgba(0,0,0,0.4), 0 10px 28px rgba(53,208,186,0.25);
+  }
+
+  .ai-toggle svg {
+    width: 28px;
+    height: 28px;
+    fill: currentColor;
+  }
+
+  .ai-panel {
+    position: absolute;
+    right: 0;
+    bottom: 78px;
+    width: min(380px, calc(100vw - 32px));
+    height: min(620px, calc(100vh - 120px));
+    background: rgba(21,24,33,0.96);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 20px;
+    overflow: hidden;
+    display: none;
+    flex-direction: column;
+    box-shadow: 0 24px 70px rgba(0,0,0,0.45);
+    backdrop-filter: blur(20px);
+  }
+
+  .ai-assistant.open .ai-panel {
+    display: flex;
+    animation: fadeUp 0.25s ease both;
+  }
+
+  .ai-header {
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    background: linear-gradient(135deg, rgba(91,141,239,0.16), rgba(53,208,186,0.08));
+  }
+
+  .ai-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .ai-avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    color: white;
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 0.78rem;
+  }
+
+  .ai-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+  }
+
+  .ai-status {
+    font-size: 0.74rem;
+    color: var(--accent3);
+    line-height: 1.3;
+  }
+
+  .ai-close {
+    width: 34px;
+    height: 34px;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 9px;
+    color: var(--text2);
+    background: rgba(255,255,255,0.04);
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: color 0.3s, border-color 0.3s;
+  }
+
+  .ai-close:hover {
+    color: var(--text);
+    border-color: rgba(255,255,255,0.18);
+  }
+
+  .ai-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .ai-message {
+    max-width: 88%;
+    padding: 0.75rem 0.9rem;
+    border-radius: 14px;
+    font-size: 0.86rem;
+    line-height: 1.6;
+  }
+
+  .ai-message.bot {
+    align-self: flex-start;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    color: var(--text2);
+    border-bottom-left-radius: 4px;
+  }
+
+  .ai-message.bot strong {
+    color: var(--text);
+    font-weight: 700;
+  }
+
+  .ai-message.bot ul {
+    padding-left: 1rem;
+    margin: 0.45rem 0 0;
+  }
+
+  .ai-message.bot li {
+    margin: 0.25rem 0;
+  }
+
+  .ai-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 0.75rem;
+  }
+
+  .ai-source,
+  .ai-confidence {
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 999px;
+    padding: 0.2rem 0.5rem;
+    font-size: 0.68rem;
+    color: var(--text3);
+    background: rgba(255,255,255,0.035);
+  }
+
+  .ai-followups {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 0.75rem;
+  }
+
+  .ai-followup,
+  .ai-mini-action {
+    border: 1px solid rgba(91,141,239,0.22);
+    border-radius: 999px;
+    background: rgba(91,141,239,0.09);
+    color: #b8ccff;
+    cursor: pointer;
+    font-size: 0.7rem;
+    padding: 0.35rem 0.55rem;
+    transition: background 0.3s, transform 0.3s;
+  }
+
+  .ai-followup:hover,
+  .ai-mini-action:hover {
+    background: rgba(91,141,239,0.16);
+    transform: translateY(-1px);
+  }
+
+  .ai-modebar {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+    padding: 0.75rem 1rem 0;
+  }
+
+  .ai-mode {
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 10px;
+    background: rgba(255,255,255,0.035);
+    color: var(--text2);
+    cursor: pointer;
+    font-size: 0.72rem;
+    padding: 0.5rem;
+    transition: color 0.3s, border-color 0.3s, background 0.3s;
+  }
+
+  .ai-mode.active,
+  .ai-mode:hover {
+    color: white;
+    border-color: rgba(91,141,239,0.32);
+    background: rgba(91,141,239,0.16);
+  }
+
+  .ai-message.user {
+    align-self: flex-end;
+    background: linear-gradient(135deg, var(--accent), #4777d6);
+    color: white;
+    border-bottom-right-radius: 4px;
+  }
+
+  .ai-message.typing {
+    display: inline-flex;
+    gap: 5px;
+    align-items: center;
+  }
+
+  .ai-message.typing span {
+    width: 6px;
+    height: 6px;
+    background: var(--accent3);
+    border-radius: 50%;
+    animation: typingDot 1s infinite ease-in-out;
+  }
+
+  .ai-message.typing span:nth-child(2) { animation-delay: 0.15s; }
+  .ai-message.typing span:nth-child(3) { animation-delay: 0.3s; }
+
+  @keyframes typingDot {
+    0%, 80%, 100% { opacity: 0.35; transform: translateY(0); }
+    40% { opacity: 1; transform: translateY(-3px); }
+  }
+
+  .ai-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 0 1rem 1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .ai-chip {
+    border: 1px solid rgba(91,141,239,0.24);
+    border-radius: 999px;
+    padding: 0.45rem 0.75rem;
+    background: rgba(91,141,239,0.1);
+    color: #b8ccff;
+    font-size: 0.74rem;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+  }
+
+  .ai-chip:hover {
+    background: rgba(91,141,239,0.18);
+    transform: translateY(-1px);
+  }
+
+  .ai-form {
+    padding: 1rem;
+    display: flex;
+    gap: 0.65rem;
+    background: rgba(13,15,20,0.8);
+  }
+
+  .ai-input {
+    flex: 1;
+    min-width: 0;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 0.75rem 0.85rem;
+    background: rgba(255,255,255,0.04);
+    color: var(--text);
+    outline: none;
+    font: inherit;
+    font-size: 0.85rem;
+  }
+
+  .ai-input:focus {
+    border-color: rgba(91,141,239,0.55);
+  }
+
+  .ai-send {
+    width: 44px;
+    height: 44px;
+    border: 0;
+    border-radius: 12px;
+    background: var(--accent);
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s, background 0.3s;
+  }
+
+  .ai-send:hover {
+    transform: translateY(-1px);
+    background: #4777d6;
+  }
+
+  .ai-send svg {
+    width: 19px;
+    height: 19px;
+    fill: currentColor;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--bg);
+    border-top: 1px solid rgba(255,255,255,0.05);
+    padding: 2rem 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    z-index: 1;
+  }
+
+  .footer-text {
+    font-size: 0.8rem;
+    color: var(--text3);
+  }
+
+  .footer-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 0.9rem;
+    color: var(--text2);
+  }
+
+  .footer-logo span { color: var(--accent); }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* SCROLLBAR */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: rgba(91,141,239,0.34); border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: rgba(91,141,239,0.55); }
+
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .mobile-nav { display: block; }
+    #hero { padding: 5rem 1.5rem 3rem; }
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero-visual { display: none; }
+    .section-wrapper { padding: 4rem 1.5rem; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .project-card { grid-column: span 1 !important; }
+    .project-card:first-child { grid-column: span 1; }
+    .project-card:first-child .project-inner { grid-template-columns: 1fr; }
+    .exp-grid { grid-template-columns: 1fr; }
+    .exp-nav { display: none; }
+    .edu-card { grid-template-columns: 1fr; }
+    .contact-card { padding: 2.5rem 1.5rem; }
+    .ai-assistant { right: 16px; bottom: 16px; }
+    .ai-toggle { width: 56px; height: 56px; border-radius: 16px; }
+    .ai-panel {
+      right: -4px;
+      bottom: 70px;
+      height: min(590px, calc(100vh - 96px));
+    }
+    footer { flex-direction: column; gap: 1rem; text-align: center; padding: 1.5rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      scroll-behavior: auto !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="orb orb1"></div>
+<div class="orb orb2"></div>
+<div class="orb orb3"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">RH<span>.</span></div>
+  <ul class="nav-links">
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact" class="nav-cta">Contact →</a></li>
+  </ul>
+  <details class="mobile-nav">
+    <summary aria-label="Buka menu navigasi">
+      <span></span>
+      <span></span>
+      <span></span>
+    </summary>
+    <div class="mobile-nav-menu">
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </details>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">
+        <div class="badge-dot"></div>
+        Open to opportunities
+      </div>
+      <h1 class="hero-name">
+        Rinaldi<br>
+        <span class="gradient-text">Hamzah</span>
+      </h1>
+      <div class="hero-title">
+        Data Analysis, Backend Automation
+      </div>
+      <p class="hero-desc">
+        Mahasiswa Informatika di Universitas Teknologi Yogyakarta dengan fokus pada Machine Learning, Data Analysis, dan pengembangan sistem berbasis Flask. Berpengalaman membangun solusi AI end-to-end dari data scraping hingga deployment.
+      </p>
+      <div class="hero-btns">
+        <a href="#projects" class="btn-primary">Lihat Proyek →</a>
+        <a href="mailto:rinaldi.hamzah07@gmail.com" class="btn-outline">✉ Hubungi Saya</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-num">5<span>+</span></div>
+          <div class="stat-label">Proyek Selesai</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">3<span>+</span></div>
+          <div class="stat-label">Tahun Belajar</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">3.32</div>
+          <div class="stat-label">IPK</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="float-card float-card-1">
+        <div class="float-label">Model Accuracy</div>
+        <div class="float-val"><span>92</span>%</div>
+      </div>
+      <div class="profile-card">
+        <div class="profile-avatar">RH</div>
+        <div class="profile-name">Rinaldi Hamzah</div>
+        <div class="profile-role">Data Analysis · Backend Automation</div>
+        <div class="profile-info">
+          <div class="info-row">
+            <div class="info-icon">📍</div>
+            <a href="https://www.google.com/maps/search/?api=1&query=Yogyakarta%2C%20Indonesia" target="_blank" rel="noopener">Yogyakarta, Indonesia</a>
+          </div>
+          <div class="info-row">
+            <div class="info-icon">✉️</div>
+            <a href="mailto:rinaldi.hamzah07@gmail.com">rinaldi.hamzah07@gmail.com</a>
+          </div>
+          <div class="info-row">
+            <div class="info-icon">📱</div>
+            <a href="tel:081374131407">081374131407</a>
+          </div>
+          <div class="info-row">
+            <div class="info-icon">💻</div>
+            <a href="https://github.com/RinaldiHamzah" target="_blank" rel="noopener">github.com/RinaldiHamzah</a>
+          </div>
+        </div>
+        <div class="skill-chips">
+          <span class="chip">Python</span>
+          <span class="chip">Flask</span>
+          <span class="chip green">Naive Bayes</span>
+          <span class="chip green">SVM</span>
+          <span class="chip green">Data Analysis</span>
+          <span class="chip pink">LSTM</span>
+          <span class="chip pink">CNN</span>
+          <span class="chip">MySQL</span>
+          <span class="chip">Git</span>
+        </div>
+        <div class="availability">
+          <div class="avail-dot"></div>
+          Tersedia untuk kolaborasi & kerja
+        </div>
+      </div>
+      <div class="float-card float-card-2">
+        <div class="float-label">Stack Utama</div>
+        <div class="float-val">Python <span>· Flask</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider-line"></div>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-wrapper">
+    <div class="section-label">Keahlian</div>
+    <h2 class="section-title reveal">Tech Stack &<br>Kompetensi</h2>
+    <p class="section-subtitle reveal">Kumpulan teknologi dan keahlian yang telah dikuasai melalui pengerjaan berbagai proyek nyata.</p>
+
+      <!-- LOGO TOOLS BAR -->
+        <div class="tools-logo-bar">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" title="Python" class="tool-logo">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg" alt="Flask" title="Flask" class="tool-logo">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL" title="MySQL" class="tool-logo">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/scikitlearn/scikitlearn-original.svg" alt="Scikit-learn" title="Scikit-learn" class="tool-logo">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg" alt="Django" title="Django" class="tool-logo">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5" title="HTML5" class="tool-logo">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3" title="CSS3" class="tool-logo">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" title="JavaScript" class="tool-logo">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" title="Git" class="tool-logo">
+          <img src="https://cdn.simpleicons.org/telegram/26A5E4" alt="Telegram Bot" title="Telegram Bot" class="tool-logo">
+          <img src="https://serpapi.com/apple-touch-icon.png" alt="SerpAPI" title="SerpAPI" class="tool-logo">
+        </div>
+
+    <div class="skills-grid">
+      <div class="skill-card reveal" style="--card-accent: #5b8def;">
+        <div class="skill-card-icon" style="background: rgba(91,141,239,0.12);">🤖</div>
+        <div class="skill-card-title">Machine Learning</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Naive Bayes</span>
+          <span class="skill-tag">SVM</span>
+          <span class="skill-tag">MLP</span>
+          <span class="skill-tag">Scikit-learn</span>
+          <span class="skill-tag">TF-IDF</span>
+          <span class="skill-tag">Ensemble</span>
+        </div>
+      </div>
+
+      <div class="skill-card reveal" style="--card-accent: #35d0ba;">
+        <div class="skill-card-icon" style="background: rgba(53,208,186,0.12);">🧠</div>
+        <div class="skill-card-title">Deep Learning</div>
+        <div class="skill-tags">
+          <span class="skill-tag">LSTM</span>
+          <span class="skill-tag">CNN</span>
+          <span class="skill-tag">RNN</span>
+          <span class="skill-tag">Time Series</span>
+          <span class="skill-tag">NLP</span>
+        </div>
+      </div>
+
+      <div class="skill-card reveal" style="--card-accent: #ff7a59;">
+        <div class="skill-card-icon" style="background: rgba(255,122,89,0.12);">🌐</div>
+        <div class="skill-card-title">Web Development</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">Flask</span>
+          <span class="skill-tag">Django</span>
+          <span class="skill-tag">HTML/CSS</span>
+          <span class="skill-tag">JavaScript</span>
+        </div>
+      </div>
+
+      <div class="skill-card reveal" style="--card-accent: #f6c453;">
+        <div class="skill-card-icon" style="background: rgba(250,199,101,0.1);">🗄️</div>
+        <div class="skill-card-title">Database & Backend</div>
+        <div class="skill-tags">
+          <span class="skill-tag">MySQL</span>
+          <span class="skill-tag">Database Design</span>
+          <span class="skill-tag">Query Optimization</span>
+          <span class="skill-tag">API Integration</span>
+        </div>
+      </div>
+
+      <div class="skill-card reveal" style="--card-accent: #5b8def;">
+        <div class="skill-card-icon" style="background: rgba(91,141,239,0.12);">🔌</div>
+        <div class="skill-card-title">API & Automation</div>
+        <div class="skill-tags">
+          <span class="skill-tag">SerpAPI</span>
+          <span class="skill-tag">Telegram Bot</span>
+          <span class="skill-tag">Web Scraping</span>
+          <span class="skill-tag">Automation</span>
+        </div>
+      </div>
+
+      <div class="skill-card reveal" style="--card-accent: #35d0ba;">
+        <div class="skill-card-icon" style="background: rgba(53,208,186,0.12);">🛠️</div>
+        <div class="skill-card-title">IT Support & Networking</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Windows/Linux</span>
+          <span class="skill-tag">IP Addressing</span>
+          <span class="skill-tag">DNS</span>
+          <span class="skill-tag">Subnetting</span>
+          <span class="skill-tag">Troubleshooting</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider-line"></div>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-wrapper">
+    <div class="section-label">Portofolio</div>
+    <h2 class="section-title reveal">Proyek yang<br>Telah Dibangun</h2>
+    <p class="section-subtitle reveal">Koleksi proyek nyata yang menggabungkan machine learning, web development, dan analisis data.</p>
+
+    <div class="projects-grid">
+
+      <!-- FEATURED PROJECT -->
+      <div class="project-card reveal">
+        <div class="project-inner">
+          <div>
+            <div class="project-meta">
+              <span class="project-role">★ Featured Project</span>
+              <span class="project-period">Jan 2026 – Apr 2026</span>
+            </div>
+            <h3 class="project-title">Sentiment Monitoring<br>Hotel Review System</h3>
+            <p class="project-desc">
+              Sistem monitoring sentimen ulasan hotel end-to-end yang mengintegrasikan scraping data Google Maps, preprocessing NLP, model ML, dashboard web, dan notifikasi real-time via Telegram Bot.
+            </p>
+            <ul class="project-highlights">
+              <li>Implementasi Naive Bayes & SVM untuk klasifikasi sentimen positif/negatif</li>
+              <li>Dashboard Flask interaktif untuk visualisasi data dan pengambilan keputusan</li>
+              <li>Integrasi SerpAPI untuk scraping otomatis & Telegram Bot untuk notifikasi real-time</li>
+              <li>Database MySQL mengelola ribuan data ulasan secara efisien</li>
+            </ul>
+            <div class="project-tech">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">Flask</span>
+              <span class="tech-tag green">Naive Bayes</span>
+              <span class="tech-tag green">SVM</span>
+              <span class="tech-tag">MySQL</span>
+              <span class="tech-tag pink">SerpAPI</span>
+              <span class="tech-tag pink">Telegram Bot</span>
+            </div>
+          </div>
+          <div class="project-visual">
+            <div class="project-images" style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 18px; justify-content: flex-start;">
+              <img src="img/dashboard.jpg" alt="Dashboard sentiment monitoring" width="70" loading="lazy" decoding="async" style="width: 70px; height: auto; border-radius: 8px; border: 1px solid #222; background: #181b22;">
+              <img src="img/analitik.jpg" alt="Halaman analitik sentimen" width="70" loading="lazy" decoding="async" style="width: 70px; height: auto; border-radius: 8px; border: 1px solid #222; background: #181b22;">
+              <img src="img/subs.jpg" alt="Halaman subscription monitoring" width="70" loading="lazy" decoding="async" style="width: 70px; height: auto; border-radius: 8px; border: 1px solid #222; background: #181b22;">
+              <img src="img/notif.jpg" alt="Notifikasi Telegram Bot" width="70" loading="lazy" decoding="async" style="width: 70px; height: auto; border-radius: 8px; border: 1px solid #222; background: #181b22;">
+              <img src="img/histori.jpg" alt="Histori review hotel" width="70" loading="lazy" decoding="async" style="width: 70px; height: auto; border-radius: 8px; border: 1px solid #222; background: #181b22;">
+            </div>
+            <div class="code-line"><span class="cm"># Sentiment Analysis Pipeline</span></div>
+            <div class="code-line"><span class="kw">from</span> sklearn <span class="kw">import</span> naive_bayes</div>
+            <div class="code-line">&nbsp;</div>
+            <div class="code-line"><span class="kw">def</span> <span class="fn">analyze_sentiment</span>(text):</div>
+            <div class="code-line">&nbsp;&nbsp;tokens = <span class="fn">preprocess</span>(text)</div>
+            <div class="code-line">&nbsp;&nbsp;features = <span class="fn">tfidf</span>(tokens)</div>
+            <div class="code-line">&nbsp;&nbsp;result = model.<span class="fn">predict</span>(features)</div>
+            <div class="code-line">&nbsp;&nbsp;<span class="kw">return</span> {</div>
+            <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="str">"label"</span>: result[<span class="num">0</span>],</div>
+            <div class="code-line">&nbsp;&nbsp;&nbsp;&nbsp;<span class="str">"confidence"</span>: <span class="num">0.92</span></div>
+            <div class="code-line">&nbsp;&nbsp;}</div>
+            <div class="code-line">&nbsp;</div>
+            <div class="code-line"><span class="cm"># ✓ Accuracy: 92% | F1: 0.91</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROJECT 2 -->
+      <div class="project-card reveal">
+        <div class="project-meta">
+          <span class="project-role">ML Developer</span>
+          <span class="project-period">Aug 2025 – Dec 2025</span>
+        </div>
+        <h3 class="project-title">Sentiment Analisis Hotel Review</h3>
+        <p class="project-desc">
+          Sistem analisis sentimen berbasis NLP dengan preprocessing lengkap — cleaning, tokenizing, stopword removal, stemming — dan evaluasi model komprehensif menggunakan accuracy, precision, recall, dan F1-score.
+        </p>
+        <ul class="project-highlights">
+          <li>Text preprocessing pipeline lengkap + TF-IDF vectorization</li>
+          <li>Evaluasi model dengan metrik accuracy, precision, recall, F1-score</li>
+          <li>Integrasi Flask untuk backend & MySQL untuk storage</li>
+        </ul>
+        <div class="project-tech" style="margin-top: 1rem;">
+          <span class="tech-tag">Python</span>
+          <span class="tech-tag green">NLP</span>
+          <span class="tech-tag green">TF-IDF</span>
+          <span class="tech-tag">Flask</span>
+          <span class="tech-tag">MySQL</span>
+        </div>
+      </div>
+
+      <!-- PROJECT 3 -->
+      <div class="project-card reveal">
+        <div class="project-meta">
+          <span class="project-role">ML Developer · Team</span>
+          <span class="project-period">Feb 2025 – Apr 2025</span>
+        </div>
+        <h3 class="project-title">Oil Price Forecasting using LSTM</h3>
+        <p class="project-desc">
+          Model prediksi harga minyak berbasis time series menggunakan Long Short-Term Memory (LSTM), dibangun bersama tim 7 orang dengan evaluasi menggunakan MAE dan MSE.
+        </p>
+        <ul class="project-highlights">
+          <li>Training LSTM untuk mempelajari pola historis harga minyak</li>
+          <li>Kolaborasi tim 7 orang dengan evaluasi MAE & MSE</li>
+        </ul>
+        <div class="project-tech" style="margin-top: 1rem;">
+          <span class="tech-tag pink">LSTM</span>
+          <span class="tech-tag pink">Deep Learning</span>
+          <span class="tech-tag">Python</span>
+          <span class="tech-tag">Time Series</span>
+        </div>
+      </div>
+
+      <!-- PROJECT 4 -->
+      <div class="project-card reveal" style="grid-column: span 2;">
+        <div class="project-meta">
+          <span class="project-role">ML Developer · Team</span>
+          <span class="project-period">Sep 2024 – Dec 2024</span>
+        </div>
+        <h3 class="project-title">MLP Ensemble Model for Prediction</h3>
+        <p class="project-desc">
+          Model prediksi menggunakan Multi-Layer Perceptron (MLP) yang dikombinasikan dengan pendekatan ensemble learning untuk meningkatkan akurasi prediksi secara signifikan.
+        </p>
+        <div class="project-tech" style="margin-top: 0.5rem;">
+          <span class="tech-tag">MLP</span>
+          <span class="tech-tag green">Ensemble Learning</span>
+          <span class="tech-tag">Python</span>
+          <span class="tech-tag">Scikit-learn</span>
+          <span class="tech-tag">Preprocessing</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="divider-line"></div>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-wrapper">
+    <div class="section-label">Pengalaman</div>
+    <h2 class="section-title reveal">Pengalaman Kerja<br>& Kontribusi</h2>
+
+    <div class="exp-grid">
+      <div class="exp-nav reveal">
+        <div class="exp-nav-item active">
+          <div class="exp-nav-dot"></div>
+          Aveta Hotel Malioboro
+        </div>
+        <div class="exp-nav-item">
+          <div class="exp-nav-dot"></div>
+          Proyek Akademik
+        </div>
+        <div class="exp-nav-item">
+          <div class="exp-nav-dot"></div>
+          Kolaborasi Tim
+        </div>
+      </div>
+
+      <div class="exp-entries">
+        <div class="exp-entry reveal">
+          <div class="exp-header">
+            <div>
+              <div class="exp-company">Aveta Hotel Malioboro</div>
+              <div class="exp-pos">Food & Beverage Service</div>
+            </div>
+            <div class="exp-period">2023 – 2025</div>
+          </div>
+          <ul class="exp-points">
+            <li>Memberikan pelayanan kepada tamu dengan komunikasi yang efektif dan profesional</li>
+            <li>Bekerja dalam lingkungan dinamis dengan tekanan kerja tinggi dan deadline ketat</li>
+            <li>Berkoordinasi dengan tim lintas divisi untuk memastikan operasional berjalan lancar</li>
+            <li>Mengembangkan kemampuan problem solving dan penanganan keluhan pengguna secara efektif</li>
+          </ul>
+        </div>
+
+        <div class="exp-entry reveal">
+          <div class="exp-header">
+            <div>
+              <div class="exp-company">Proyek Utama Informatika</div>
+              <div class="exp-pos">Web Developer · Fullstack</div>
+            </div>
+            <div class="exp-period">Apr 2025 – Jul 2025</div>
+          </div>
+          <ul class="exp-points">
+            <li>Menerapkan algoritma ML (Naive Bayes & SVM) ke dalam sistem backend Flask</li>
+            <li>Mengembangkan alur pemrosesan data dari input hingga penyimpanan di MySQL</li>
+            <li>Evaluasi performa model dengan accuracy, precision, recall, dan F1-score</li>
+            <li>Debugging dan pengujian sistem untuk stabilitas dan kinerja aplikasi</li>
+          </ul>
+        </div>
+
+        <div class="exp-entry reveal">
+          <div class="exp-header">
+            <div>
+              <div class="exp-company">Tim Proyek Akademik</div>
+              <div class="exp-pos">Machine Learning Developer</div>
+            </div>
+            <div class="exp-period">2024 – 2025</div>
+          </div>
+          <ul class="exp-points">
+            <li>Berkolaborasi dalam tim 7 orang untuk proyek Oil Price Forecasting (LSTM)</li>
+            <li>Berkontribusi dalam pengembangan MLP Ensemble Model bersama tim</li>
+            <li>Preprocessing data, training model, dan evaluasi performa secara iteratif</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider-line"></div>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="section-wrapper">
+    <div class="section-label">Pendidikan</div>
+    <h2 class="section-title reveal">Latar Belakang<br>Akademik</h2>
+
+    <div class="edu-card reveal">
+      <div>
+        <div class="edu-icon">🎓</div>
+        <div class="edu-degree">S1 Teknik Informatika</div>
+        <div class="edu-school">Universitas Teknologi Yogyakarta</div>
+        <div class="edu-details">
+          <div class="edu-detail">
+            <span class="edu-detail-icon">📅</span>
+            2022 – Sekarang
+          </div>
+          <div class="edu-detail">
+            <span class="edu-detail-icon">📍</span>
+            Yogyakarta, Indonesia
+          </div>
+        </div>
+        <div class="lang-badges" style="grid-column: unset; margin-top: 1.5rem;">
+          <div class="lang-badge">🇮🇩 Bahasa Indonesia — Aktif</div>
+          <div class="lang-badge">🇬🇧 Bahasa Inggris — Advanced</div>
+        </div>
+      </div>
+
+      <div class="edu-stats">
+        <div class="edu-stat-card">
+          <div class="edu-stat-num" style="color: var(--accent);">3.32</div>
+          <div class="edu-stat-label">IPK</div>
+        </div>
+        <div class="edu-stat-card">
+          <div class="edu-stat-num" style="color: var(--accent3);">3+</div>
+          <div class="edu-stat-label">Tahun</div>
+        </div>
+        <div class="edu-stat-card">
+          <div class="edu-stat-num" style="color: var(--accent2);">5+</div>
+          <div class="edu-stat-label">Proyek</div>
+        </div>
+        <div class="edu-stat-card">
+          <div class="edu-stat-num" style="color: #f6c453;">8+</div>
+          <div class="edu-stat-label">Tech Stack</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider-line"></div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-wrapper">
+    <div class="contact-card reveal">
+      <div class="section-label" style="justify-content: center;">Kontak</div>
+      <h2 class="section-title" style="font-size: 2.2rem; margin-bottom: 0.8rem;">
+        Mari Berkolaborasi!
+      </h2>
+      <p style="font-size: 0.95rem; color: var(--text2); max-width: 480px; margin: 0 auto; line-height: 1.8;">
+        Terbuka untuk peluang kerja, kolaborasi proyek, atau sekadar berdiskusi tentang machine learning dan teknologi.
+      </p>
+      <div class="contact-links">
+        <a href="mailto:rinaldi.hamzah07@gmail.com" class="contact-link primary" aria-label="Email" title="Email">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Zm9 8.08L5.45 7H4v.8l8 7.42 8-7.42V7h-1.45L12 13.08Z"/>
+          </svg>
+        </a>
+        <a href="https://github.com/RinaldiHamzah" target="_blank" rel="noopener" class="contact-link" aria-label="GitHub" title="GitHub">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 .5A12 12 0 0 0 8.2 23.9c.6.1.82-.26.82-.58v-2.05c-3.34.73-4.04-1.42-4.04-1.42-.55-1.38-1.34-1.75-1.34-1.75-1.09-.75.08-.74.08-.74 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49.99.1-.78.42-1.3.76-1.6-2.67-.3-5.47-1.34-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23A11.5 11.5 0 0 1 12 6.48c1.02 0 2.04.14 3 .41 2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.25 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.49 5.93.43.37.82 1.1.82 2.22v3.3c0 .32.22.69.83.57A12 12 0 0 0 12 .5Z"/>
+          </svg>
+        </a>
+        <a href="https://www.linkedin.com/in/rinaldi-hamzah-253842389/" target="_blank" rel="noopener" class="contact-link" aria-label="LinkedIn" title="LinkedIn">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.95v5.66H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.32 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12Zm1.78 13.02H3.54V9H7.1v11.45ZM22.23 0H1.76C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.76 24h20.47c.97 0 1.77-.77 1.77-1.72V1.72C24 .77 23.2 0 22.23 0Z"/>
+          </svg>
+        </a>
+        <a href="tel:081374131407" class="contact-link" aria-label="Telepon" title="Telepon">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.61 21 3 13.39 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.24.2 2.45.57 3.57a1 1 0 0 1-.25 1.02l-2.2 2.2Z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-text">© <span id="year"></span> Rinaldi Hamzah</div>
+  <div class="footer-logo">RH<span>.</span></div>
+  <div class="footer-text" id="footer-location">Yogyakarta, Indonesia</div>
+</footer>
+
+<!-- AI ASSISTANT -->
+<div class="ai-assistant" id="aiAssistant">
+  <div class="ai-panel" role="dialog" aria-label="Portfolio AI Assistant">
+    <div class="ai-header">
+      <div class="ai-brand">
+        <div class="ai-avatar">AI</div>
+        <div>
+          <div class="ai-title">Portfolio Assistant</div>
+          <div class="ai-status">Siap bantu jelaskan profil Rinaldi</div>
+        </div>
+      </div>
+      <button class="ai-close" type="button" id="aiClose" aria-label="Tutup assistant">×</button>
+    </div>
+    <div class="ai-messages" id="aiMessages" aria-live="polite"></div>
+    <div class="ai-modebar" aria-label="Mode assistant">
+      <button class="ai-mode active" type="button" data-mode="visitor">Visitor</button>
+      <button class="ai-mode" type="button" data-mode="recruiter">Recruiter</button>
+      <button class="ai-mode" type="button" data-mode="career">Career</button>
+    </div>
+    <div class="ai-actions" id="aiActions">
+      <button class="ai-chip" type="button" data-question="Ceritakan profil Rinaldi">Profil</button>
+      <button class="ai-chip" type="button" data-question="Apa skill utama Rinaldi?">Skill</button>
+      <button class="ai-chip" type="button" data-question="Project terbaik apa yang pernah dibuat?">Project</button>
+      <button class="ai-chip" type="button" data-question="Apakah Rinaldi cocok untuk Data Analyst?">Data Analyst</button>
+      <button class="ai-chip" type="button" data-question="Buat ringkasan untuk recruiter">Recruiter Summary</button>
+      <button class="ai-chip" type="button" data-question="Buat roadmap pengembangan Rinaldi">Roadmap</button>
+      <button class="ai-chip" type="button" data-question="Bagaimana cara menghubungi Rinaldi?">Kontak</button>
+    </div>
+    <form class="ai-form" id="aiForm">
+      <input class="ai-input" id="aiInput" type="text" placeholder="Tanya tentang skill, project, kontak..." autocomplete="off">
+      <button class="ai-send" type="submit" aria-label="Kirim pertanyaan">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M2.01 21 23 12 2.01 3 2 10l15 2-15 2 .01 7Z"/>
+        </svg>
+      </button>
+    </form>
+  </div>
+  <button class="ai-toggle" type="button" id="aiToggle" aria-label="Buka Portfolio Assistant" aria-expanded="false">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M12 2a1 1 0 0 1 1 1v1.06A8 8 0 0 1 20 12v5a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3v-5a8 8 0 0 1 7-7.94V3a1 1 0 0 1 1-1Zm-4 9.25a1.25 1.25 0 1 0 0 2.5 1.25 1.25 0 0 0 0-2.5Zm8 0a1.25 1.25 0 1 0 0 2.5 1.25 1.25 0 0 0 0-2.5Zm-6.7 5.1a1 1 0 0 0-.6 1.9 8.9 8.9 0 0 0 6.6 0 1 1 0 1 0-.6-1.9 6.9 6.9 0 0 1-5.4 0Z"/>
+    </svg>
+  </button>
+</div>
+
+<script>
+  // Set current year automatically
+  document.getElementById('year').textContent = new Date().getFullYear();
+  // Untuk mengubah lokasi, edit langsung elemen dengan id 'footer-location'
+</script>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, 100);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  document.querySelectorAll('.exp-nav-item').forEach((item, i) => {
+    item.addEventListener('click', () => {
+      document.querySelectorAll('.exp-nav-item').forEach(el => el.classList.remove('active'));
+      item.classList.add('active');
+    });
+  });
+
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth' });
+      const openMobileNav = this.closest('.mobile-nav');
+      if (openMobileNav) openMobileNav.removeAttribute('open');
+    });
+  });
+
+  const aiAssistant = document.getElementById('aiAssistant');
+  const aiToggle = document.getElementById('aiToggle');
+  const aiClose = document.getElementById('aiClose');
+  const aiMessages = document.getElementById('aiMessages');
+  const aiForm = document.getElementById('aiForm');
+  const aiInput = document.getElementById('aiInput');
+
+  let assistantMode = 'visitor';
+  let lastRoleName = 'data analyst';
+
+  const portfolioKnowledge = {
+    identity: {
+      name: 'Rinaldi Hamzah',
+      title: 'Machine Learning, Data Analysis & Backend Automation',
+      location: 'Yogyakarta, Indonesia',
+      education: 'S1 Teknik Informatika, Universitas Teknologi Yogyakarta',
+      gpa: '3.32'
+    },
+    skills: {
+      ml: ['Naive Bayes', 'SVM', 'MLP', 'Scikit-learn', 'TF-IDF', 'Ensemble Learning'],
+      data: ['Data cleaning', 'Tokenizing', 'Stopword removal', 'Stemming', 'Evaluation metrics', 'Dashboard insight'],
+      web: ['Python', 'Flask', 'Django', 'HTML/CSS', 'JavaScript', 'MySQL'],
+      automation: ['SerpAPI', 'Telegram Bot', 'Web scraping', 'API Integration', 'Automation'],
+      support: ['Windows/Linux', 'DNS', 'Subnetting', 'Troubleshooting', 'IP Addressing']
+    },
+    projects: [
+      {
+        name: 'Sentiment Monitoring Hotel Review System',
+        role: 'Featured Project',
+        period: 'Jan 2026 - Apr 2026',
+        stack: ['Python', 'Flask', 'MySQL', 'Naive Bayes', 'SVM', 'SerpAPI', 'Telegram Bot'],
+        impact: 'End-to-end system untuk scraping Google Maps, klasifikasi sentimen, dashboard web, dan notifikasi real-time.',
+        section: '#projects'
+      },
+      {
+        name: 'Sentiment Analisis Hotel Review',
+        role: 'ML Developer',
+        period: 'Aug 2025 - Dec 2025',
+        stack: ['NLP', 'TF-IDF', 'Flask', 'MySQL'],
+        impact: 'Pipeline NLP lengkap dengan evaluasi accuracy, precision, recall, dan F1-score.',
+        section: '#projects'
+      },
+      {
+        name: 'Oil Price Forecasting using LSTM',
+        role: 'ML Developer - Team',
+        period: 'Feb 2025 - Apr 2025',
+        stack: ['LSTM', 'Deep Learning', 'Python', 'Time Series'],
+        impact: 'Forecasting time series bersama tim 7 orang dengan evaluasi MAE dan MSE.',
+        section: '#projects'
+      }
+    ],
+    contact: {
+      email: 'rinaldi.hamzah07@gmail.com',
+      github: 'github.com/RinaldiHamzah',
+      linkedin: 'linkedin.com/in/rinaldi-hamzah-253842389',
+      phone: '081374131407'
+    },
+    experience: [
+      'Food & Beverage Service di Aveta Hotel Malioboro: komunikasi, tekanan kerja, koordinasi tim, problem solving.',
+      'Proyek akademik sebagai Web Developer Fullstack: Flask, MySQL, ML backend, evaluasi model.',
+      'Kolaborasi tim ML: LSTM forecasting dan MLP Ensemble.'
+    ]
+  };
+
+  const roleProfiles = {
+    'data analyst': ['data', 'analysis', 'analyst', 'cleaning', 'dashboard', 'metric', 'visualisasi', 'sql', 'mysql'],
+    'machine learning developer': ['machine', 'learning', 'ml', 'model', 'naive', 'svm', 'lstm', 'nlp', 'tf-idf'],
+    'backend developer': ['backend', 'flask', 'api', 'mysql', 'automation', 'database', 'server'],
+    'fullstack developer': ['fullstack', 'frontend', 'backend', 'html', 'css', 'javascript', 'flask', 'django'],
+    'automation developer': ['automation', 'scraping', 'serpapi', 'telegram', 'bot', 'api']
+  };
+
+  const responseLibrary = [
+    {
+      id: 'recruiter',
+      keys: ['recruiter', 'hr', 'ringkasan', 'summary', 'hire', 'rekrut'],
+      section: '#contact',
+      confidence: 'High',
+      html: '<strong>Recruiter summary:</strong><ul><li>Rinaldi adalah kandidat junior yang kuat di area Machine Learning, Data Analysis, dan Flask-based backend.</li><li>Punya project end-to-end: scraping data, NLP preprocessing, model classification, dashboard, database, dan Telegram notification.</li><li>Cocok untuk role Junior ML Developer, Data Analyst, Backend Automation, atau Fullstack Web Developer.</li></ul>',
+      followups: ['Buat pitch 30 detik', 'Cocok untuk Data Analyst?', 'Tampilkan project terbaik']
+    },
+    {
+      id: 'profile',
+      keys: ['profil', 'tentang', 'siapa', 'bio', 'rinaldi'],
+      section: '#hero',
+      confidence: 'High',
+      html: '<strong>Profil singkat:</strong> Rinaldi Hamzah adalah mahasiswa S1 Teknik Informatika UTY yang fokus pada Machine Learning, Data Analysis, Fullstack Web Development, dan Backend Automation. Portfolio ini menonjolkan kemampuan membangun solusi dari data sampai aplikasi.',
+      followups: ['Skill utama apa?', 'Buat pitch recruiter', 'Lihat pendidikan']
+    },
+    {
+      id: 'skills',
+      keys: ['skill', 'keahlian', 'tools', 'teknologi', 'stack', 'python', 'flask'],
+      section: '#skills',
+      confidence: 'High',
+      html: '<strong>Skill map:</strong><ul><li><strong>ML/NLP:</strong> Naive Bayes, SVM, LSTM, CNN, TF-IDF, Scikit-learn.</li><li><strong>Data Analysis:</strong> cleaning, preprocessing, metric evaluation, insight dashboard.</li><li><strong>Web/Backend:</strong> Python, Flask, Django, MySQL, JavaScript.</li><li><strong>Automation:</strong> SerpAPI, Telegram Bot, web scraping, API integration.</li></ul>',
+      followups: ['Cocok role apa?', 'Project mana paling kuat?', 'Roadmap pengembangan']
+    },
+    {
+      id: 'projects',
+      keys: ['project', 'proyek', 'portfolio', 'sentiment', 'hotel', 'telegram', 'serpapi'],
+      section: '#projects',
+      confidence: 'High',
+      html: '<strong>Project paling kuat:</strong> Sentiment Monitoring Hotel Review System. Nilainya tinggi karena end-to-end: scraping Google Maps dengan SerpAPI, preprocessing NLP, klasifikasi Naive Bayes/SVM, penyimpanan MySQL, dashboard Flask, dan notifikasi Telegram Bot.',
+      followups: ['Jelaskan arsitektur project', 'Apa impact project?', 'Cocok untuk ML Developer?']
+    },
+    {
+      id: 'data',
+      keys: ['data', 'analysis', 'analisis', 'analyst', 'visualisasi', 'metric', 'metrik'],
+      section: '#projects',
+      confidence: 'Medium-High',
+      html: '<strong>Data Analysis fit:</strong><ul><li>Kuat di preprocessing text: cleaning, tokenizing, stopword removal, stemming.</li><li>Memahami evaluasi model: accuracy, precision, recall, F1-score, MAE, MSE.</li><li>Punya pengalaman dashboard Flask untuk menyajikan insight dari data review hotel.</li><li>Tambahan yang bagus berikutnya: SQL analytics, Excel/Power BI/Tableau, dan storytelling dashboard.</li></ul>',
+      followups: ['Buat roadmap Data Analyst', 'Skill gap apa?', 'Buat pitch Data Analyst']
+    },
+    {
+      id: 'architecture',
+      keys: ['arsitektur', 'architecture', 'alur', 'pipeline', 'sistem', 'flow'],
+      section: '#projects',
+      confidence: 'Medium-High',
+      html: '<strong>Arsitektur project utama:</strong><ul><li>Input: review hotel dari Google Maps melalui SerpAPI.</li><li>Processing: text cleaning, tokenizing, stopword removal, stemming, TF-IDF.</li><li>Model: Naive Bayes dan SVM untuk klasifikasi sentimen.</li><li>Storage: MySQL untuk menyimpan review dan hasil prediksi.</li><li>Output: dashboard Flask dan notifikasi Telegram Bot.</li></ul>',
+      followups: ['Apa stack project?', 'Jelaskan impact project', 'Tampilkan proyek']
+    },
+    {
+      id: 'roadmap',
+      keys: ['roadmap', 'belajar', 'pengembangan', 'improve', 'upgrade', 'next'],
+      section: '#skills',
+      confidence: 'Advisory',
+      html: '<strong>Roadmap pengembangan:</strong><ul><li><strong>Data Analyst:</strong> SQL analytics, Power BI/Tableau, statistik dasar, dashboard storytelling.</li><li><strong>ML Developer:</strong> model deployment, experiment tracking, feature engineering, model monitoring.</li><li><strong>Backend:</strong> REST API design, auth, testing, Docker, deployment cloud.</li><li><strong>Portfolio:</strong> tambah link demo, screenshot dashboard, dan README teknis tiap project.</li></ul>',
+      followups: ['Skill gap untuk Data Analyst', 'Buat prioritas 30 hari', 'Cocok role apa?']
+    },
+    {
+      id: 'contact',
+      keys: ['kontak', 'email', 'linkedin', 'github', 'telepon', 'hubungi', 'wa', 'whatsapp'],
+      section: '#contact',
+      confidence: 'High',
+      html: '<strong>Kontak Rinaldi:</strong><ul><li>Email: rinaldi.hamzah07@gmail.com</li><li>GitHub: github.com/RinaldiHamzah</li><li>LinkedIn: linkedin.com/in/rinaldi-hamzah-253842389</li><li>Telepon: 081374131407</li></ul>',
+      followups: ['Buat pesan recruiter', 'Lihat GitHub', 'Buka kontak']
+    },
+    {
+      id: 'experience',
+      keys: ['pengalaman', 'experience', 'aveta', 'kerja', 'tim'],
+      section: '#experience',
+      confidence: 'High',
+      html: '<strong>Pengalaman:</strong><ul><li>Aveta Hotel Malioboro: komunikasi profesional, koordinasi, problem solving, kerja di bawah tekanan.</li><li>Proyek akademik: web fullstack, Flask backend, MySQL, integrasi ML.</li><li>Kolaborasi tim: LSTM forecasting dan MLP Ensemble.</li></ul>',
+      followups: ['Cocok role apa?', 'Buat summary recruiter', 'Lihat pengalaman']
+    }
+  ];
+
+  function addMessage(text, sender = 'bot') {
+    const message = document.createElement('div');
+    message.className = `ai-message ${sender}`;
+    message.textContent = text;
+    aiMessages.appendChild(message);
+    aiMessages.scrollTop = aiMessages.scrollHeight;
+  }
+
+  function addRichMessage(response) {
+    const message = document.createElement('div');
+    message.className = 'ai-message bot';
+
+    const meta = `
+      <div class="ai-meta">
+        <span class="ai-confidence">Confidence: ${response.confidence || 'Medium'}</span>
+        <span class="ai-source">Source: Portfolio content</span>
+      </div>
+    `;
+    const actions = `
+      <div class="ai-followups">
+        ${(response.followups || []).map(item => `<button class="ai-followup" type="button" data-question="${item}">${item}</button>`).join('')}
+        ${response.section ? `<button class="ai-mini-action" type="button" data-section="${response.section}">Lihat section</button>` : ''}
+      </div>
+    `;
+
+    message.innerHTML = `${response.html}${meta}${actions}`;
+    aiMessages.appendChild(message);
+    aiMessages.scrollTop = aiMessages.scrollHeight;
+  }
+
+  function showTyping() {
+    const typing = document.createElement('div');
+    typing.className = 'ai-message bot typing';
+    typing.id = 'aiTyping';
+    typing.innerHTML = '<span></span><span></span><span></span>';
+    aiMessages.appendChild(typing);
+    aiMessages.scrollTop = aiMessages.scrollHeight;
+  }
+
+  function hideTyping() {
+    const typing = document.getElementById('aiTyping');
+    if (typing) typing.remove();
+  }
+
+  function scoreRoleFit(question) {
+    const normalized = question.toLowerCase();
+    const roleName = Object.keys(roleProfiles).find(role => normalized.includes(role)) || (normalized.includes('role ini') ? lastRoleName : null);
+    if (!roleName) return null;
+    lastRoleName = roleName;
+
+    const roleKeys = roleProfiles[roleName];
+    const allSkills = Object.values(portfolioKnowledge.skills).flat().join(' ').toLowerCase();
+    const projectText = portfolioKnowledge.projects.map(project => `${project.name} ${project.stack.join(' ')} ${project.impact}`).join(' ').toLowerCase();
+    const score = roleKeys.reduce((total, key) => total + (allSkills.includes(key) || projectText.includes(key) ? 1 : 0), 0);
+    const percentage = Math.min(95, Math.round((score / roleKeys.length) * 100) + 15);
+
+    return {
+      html: `<strong>Role fit: ${roleName}</strong><ul><li>Estimasi kecocokan: <strong>${percentage}%</strong> berdasarkan skill dan project di portfolio.</li><li>Kekuatan utama: Python, Flask, MySQL, NLP/ML, data preprocessing, API integration, dan automation.</li><li>Area yang bisa ditambah: project demo live, dokumentasi teknis, dan tools spesifik sesuai role.</li></ul>`,
+      section: roleName.includes('data') ? '#projects' : '#skills',
+      confidence: 'Advisory',
+      followups: ['Buat roadmap untuk role ini', 'Buat pitch recruiter', 'Skill gap apa?']
+    };
+  }
+
+  function modePrefix() {
+    if (assistantMode === 'recruiter') return '<strong>Mode Recruiter:</strong> ';
+    if (assistantMode === 'career') return '<strong>Mode Career:</strong> ';
+    return '';
+  }
+
+  function findAssistantResponse(question) {
+    const normalized = question.toLowerCase();
+    const roleFit = scoreRoleFit(normalized);
+    if (roleFit) {
+      roleFit.html = modePrefix() + roleFit.html;
+      return roleFit;
+    }
+
+    if (normalized.includes('cocok role') || normalized.includes('role apa') || normalized.includes('posisi apa')) {
+      return {
+        html: `${modePrefix()}<strong>Role ranking paling cocok:</strong><ul><li><strong>1. Junior Machine Learning Developer</strong> - kuat karena ada NLP, Naive Bayes, SVM, LSTM, TF-IDF.</li><li><strong>2. Data Analyst</strong> - cocok karena ada preprocessing, evaluasi metrik, MySQL, dan dashboard insight.</li><li><strong>3. Backend Automation Developer</strong> - cocok karena Flask, MySQL, API integration, SerpAPI, Telegram Bot.</li><li><strong>4. Fullstack Web Developer</strong> - cukup cocok, terutama untuk Flask/Django dashboard.</li></ul>`,
+        section: '#skills',
+        confidence: 'Advisory',
+        followups: ['Cocok untuk Data Analyst?', 'Cocok untuk Backend Developer?', 'Buat pitch recruiter']
+      };
+    }
+
+    if (normalized.includes('pesan recruiter') || normalized.includes('email recruiter') || normalized.includes('message recruiter')) {
+      return {
+        html: `${modePrefix()}<strong>Contoh pesan ke recruiter:</strong><br>Halo, saya Rinaldi Hamzah, mahasiswa Informatika yang fokus pada Machine Learning, Data Analysis, dan Backend Automation. Saya memiliki pengalaman membangun sistem sentiment monitoring end-to-end menggunakan Python, Flask, MySQL, SerpAPI, model Naive Bayes/SVM, dan Telegram Bot. Saya tertarik untuk berkontribusi pada posisi junior yang berkaitan dengan data, machine learning, atau backend automation. Terima kasih.`,
+        section: '#contact',
+        confidence: 'High',
+        followups: ['Buat versi lebih singkat', 'Lihat kontak', 'Buat pitch 30 detik']
+      };
+    }
+
+    if (normalized.includes('30 hari') || normalized.includes('prioritas')) {
+      return {
+        html: `${modePrefix()}<strong>Prioritas 30 hari:</strong><ul><li>Minggu 1: rapikan README project utama, tambahkan arsitektur dan screenshot dashboard.</li><li>Minggu 2: perdalam SQL analytics: join, CTE, aggregate, window function.</li><li>Minggu 3: buat mini dashboard Data Analysis dengan insight visual.</li><li>Minggu 4: deploy demo Flask dan tambahkan link demo di portfolio.</li></ul>`,
+        section: '#projects',
+        confidence: 'Advisory',
+        followups: ['Skill gap apa?', 'Buat roadmap Data Analyst', 'Project apa yang perlu ditambah?']
+      };
+    }
+
+    if (normalized.includes('project apa yang perlu') || normalized.includes('project ditambah')) {
+      return {
+        html: `${modePrefix()}<strong>Project tambahan yang paling menaikkan nilai portfolio:</strong><ul><li><strong>Data Analyst Dashboard:</strong> dataset publik, SQL analysis, visualisasi KPI, insight bisnis.</li><li><strong>ML Deployment Demo:</strong> endpoint Flask untuk prediksi sentimen dengan form input.</li><li><strong>Automation Case Study:</strong> scraping, cleaning, penyimpanan database, notifikasi Telegram, log error.</li></ul>`,
+        section: '#projects',
+        confidence: 'Advisory',
+        followups: ['Buat prioritas 30 hari', 'Cocok role apa?', 'Jelaskan arsitektur project']
+      };
+    }
+
+    if (normalized.includes('pitch') || normalized.includes('30 detik')) {
+      return {
+        html: `${modePrefix()}<strong>Pitch 30 detik:</strong> Saya Rinaldi Hamzah, mahasiswa Informatika yang fokus pada Machine Learning, Data Analysis, dan Backend Automation. Saya pernah membangun sistem analisis sentimen hotel end-to-end menggunakan Python, Flask, MySQL, SerpAPI, model Naive Bayes/SVM, dan Telegram Bot. Saya tertarik membantu tim mengubah data menjadi insight dan aplikasi yang bisa dipakai.`,
+        section: '#hero',
+        confidence: 'High',
+        followups: ['Buat versi recruiter', 'Cocok role apa?', 'Tampilkan project']
+      };
+    }
+
+    if (normalized.includes('gap') || normalized.includes('kekurangan')) {
+      return {
+        html: `${modePrefix()}<strong>Skill gap yang paling bernilai ditambah:</strong><ul><li>SQL analytics lebih dalam: join, window function, CTE, query optimization.</li><li>Dashboard BI: Power BI atau Tableau untuk role Data Analyst.</li><li>Deployment: Docker, cloud deploy, environment variable, testing.</li><li>Portfolio proof: screenshot dashboard, live demo, README teknis, dan dataset sample.</li></ul>`,
+        section: '#skills',
+        confidence: 'Advisory',
+        followups: ['Buat roadmap 30 hari', 'Cocok untuk Data Analyst?', 'Project apa yang perlu ditambah?']
+      };
+    }
+
+    let bestMatch = null;
+    let bestScore = 0;
+
+    responseLibrary.forEach(intent => {
+      const score = intent.keys.reduce((total, key) => total + (normalized.includes(key) ? 1 : 0), 0);
+      if (score > bestScore) {
+        bestScore = score;
+        bestMatch = intent;
+      }
+    });
+
+    if (bestMatch) return bestMatch;
+
+    return {
+      html: `${modePrefix()}Saya belum menemukan jawaban spesifik, tapi saya bisa membantu menganalisis profil Rinaldi dari beberapa sudut: skill, project, Data Analysis, role fit, recruiter summary, roadmap belajar, pengalaman, dan kontak.`,
+      section: '#skills',
+      confidence: 'Low-Medium',
+      followups: ['Apa skill utama Rinaldi?', 'Buat ringkasan recruiter', 'Cocok untuk Data Analyst?']
+    };
+  }
+
+  function answerQuestion(question) {
+    addMessage(question, 'user');
+    showTyping();
+
+    setTimeout(() => {
+      const response = findAssistantResponse(question);
+      hideTyping();
+      addRichMessage(response);
+
+      const target = document.querySelector(response.section);
+      if (target) {
+        setTimeout(() => target.scrollIntoView({ behavior: 'smooth', block: 'start' }), 250);
+      }
+    }, 650);
+  }
+
+  function openAssistant() {
+    aiAssistant.classList.add('open');
+    aiToggle.setAttribute('aria-expanded', 'true');
+    setTimeout(() => aiInput.focus(), 100);
+
+    if (!aiMessages.dataset.started) {
+      addRichMessage({
+        html: '<strong>Halo, saya Portfolio Assistant Rinaldi.</strong> Saya bisa bantu seperti mini recruiter analyst: menjelaskan skill, menilai kecocokan role, merangkum project, membuat pitch, dan memberi roadmap pengembangan.',
+        section: '#skills',
+        confidence: 'High',
+        followups: ['Buat ringkasan recruiter', 'Cocok untuk Data Analyst?', 'Project terbaik apa?']
+      });
+      aiMessages.dataset.started = 'true';
+    }
+  }
+
+  function closeAssistant() {
+    aiAssistant.classList.remove('open');
+    aiToggle.setAttribute('aria-expanded', 'false');
+  }
+
+  aiToggle.addEventListener('click', () => {
+    if (aiAssistant.classList.contains('open')) closeAssistant();
+    else openAssistant();
+  });
+
+  aiClose.addEventListener('click', closeAssistant);
+
+  aiForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const question = aiInput.value.trim();
+    if (!question) return;
+    aiInput.value = '';
+    answerQuestion(question);
+  });
+
+  document.querySelectorAll('.ai-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      answerQuestion(chip.dataset.question);
+    });
+  });
+
+  document.querySelectorAll('.ai-mode').forEach(modeButton => {
+    modeButton.addEventListener('click', () => {
+      document.querySelectorAll('.ai-mode').forEach(button => button.classList.remove('active'));
+      modeButton.classList.add('active');
+      assistantMode = modeButton.dataset.mode;
+      addRichMessage({
+        html: `<strong>Mode ${modeButton.textContent} aktif.</strong> Jawaban berikutnya akan disesuaikan dengan sudut pandang ini.`,
+        section: '#skills',
+        confidence: 'High',
+        followups: ['Buat ringkasan recruiter', 'Cocok role apa?', 'Roadmap pengembangan']
+      });
+    });
+  });
+
+  aiMessages.addEventListener('click', (event) => {
+    const followup = event.target.closest('.ai-followup');
+    const action = event.target.closest('.ai-mini-action');
+
+    if (followup) answerQuestion(followup.dataset.question);
+    if (action) {
+      const target = document.querySelector(action.dataset.section);
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+</script>
+</body>
+</html>
