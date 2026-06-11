@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Portfolio Rinaldi Hamzah - Machine Learning, Data Analysis, Backend Automation, dan Web Development.">
+<meta name="description" content="Portfolio Rinaldi Hamzah - Aspiring Data Engineer dengan pengalaman Machine Learning, Data Analysis, Backend Automation, dan Web Development.">
 <meta name="theme-color" content="#0d0f14">
 <meta property="og:title" content="Rinaldi Hamzah - Portfolio">
-<meta property="og:description" content="Portfolio Machine Learning, Data Analysis, Backend Automation, dan Web Development.">
+<meta property="og:description" content="Portfolio Aspiring Data Engineer: Machine Learning, Data Analysis, Backend Automation, dan Web Development.">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary">
 <title>Rinaldi Hamzah — Portfolio</title>
@@ -267,8 +267,27 @@
     color: var(--text2);
     line-height: 1.8;
     max-width: 480px;
-    margin-bottom: 2.5rem;
+    margin-bottom: 1rem;
     animation: fadeUp 0.6s 0.3s ease both;
+  }
+
+  .hero-role-callout {
+    max-width: 520px;
+    margin-bottom: 2.5rem;
+    padding: 1rem 1.1rem;
+    border: 1px solid rgba(53,208,186,0.24);
+    border-left: 3px solid var(--accent3);
+    border-radius: 8px;
+    background: rgba(53,208,186,0.07);
+    color: var(--text2);
+    font-size: 0.94rem;
+    line-height: 1.65;
+    animation: fadeUp 0.6s 0.35s ease both;
+  }
+
+  .hero-role-callout strong {
+    color: var(--text);
+    font-weight: 700;
   }
 
   .hero-btns {
@@ -1501,14 +1520,17 @@
         <span class="gradient-text">Hamzah</span>
       </h1>
       <div class="hero-title">
-        Data Analysis, Backend Automation
+        Aspiring Data Engineer · Backend Automation
       </div>
       <p class="hero-desc">
-        Mahasiswa Informatika di Universitas Teknologi Yogyakarta dengan fokus pada Machine Learning, Data Analysis, dan pengembangan sistem berbasis Flask. Berpengalaman membangun solusi AI end-to-end dari data scraping hingga deployment.
+        Mahasiswa Informatika di Universitas Teknologi Yogyakarta dengan fokus pada Machine Learning, Data Analysis, dan pengembangan sistem berbasis Flask. Berpengalaman membangun solusi end-to-end dari data scraping, pengolahan data, penyimpanan MySQL, hingga dashboard.
       </p>
+      <div class="hero-role-callout">
+        <strong>Terbuka untuk posisi Junior Data Engineer.</strong> Siap membantu tim membangun pipeline data, otomasi pengambilan data dari API/scraping, merapikan alur ETL, dan menyiapkan data yang siap dipakai untuk analisis maupun aplikasi.
+      </div>
       <div class="hero-btns">
         <a href="#projects" class="btn-primary">Lihat Proyek →</a>
-        <a href="mailto:rinaldi.hamzah07@gmail.com" class="btn-outline">✉ Hubungi Saya</a>
+        <a href="mailto:rinaldi.hamzah07@gmail.com?subject=Kesempatan%20Junior%20Data%20Engineer" class="btn-outline">✉ Diskusi Role Data Engineer</a>
       </div>
       <div class="hero-stats">
         <div class="stat-item">
@@ -1534,7 +1556,7 @@
       <div class="profile-card">
         <div class="profile-avatar">RH</div>
         <div class="profile-name">Rinaldi Hamzah</div>
-        <div class="profile-role">Data Analysis · Backend Automation</div>
+        <div class="profile-role">Aspiring Data Engineer · Backend Automation</div>
         <div class="profile-info">
           <div class="info-row">
             <div class="info-icon">📍</div>
@@ -1559,6 +1581,7 @@
           <span class="chip green">Naive Bayes</span>
           <span class="chip green">SVM</span>
           <span class="chip green">Data Analysis</span>
+          <span class="chip green">ETL</span>
           <span class="chip pink">LSTM</span>
           <span class="chip pink">CNN</span>
           <span class="chip">MySQL</span>
@@ -1641,10 +1664,12 @@
 
       <div class="skill-card reveal" style="--card-accent: #f6c453;">
         <div class="skill-card-icon" style="background: rgba(250,199,101,0.1);">🗄️</div>
-        <div class="skill-card-title">Database & Backend</div>
+        <div class="skill-card-title">Data Engineering & Database</div>
         <div class="skill-tags">
           <span class="skill-tag">MySQL</span>
           <span class="skill-tag">Database Design</span>
+          <span class="skill-tag">ETL Pipeline</span>
+          <span class="skill-tag">Data Modeling</span>
           <span class="skill-tag">Query Optimization</span>
           <span class="skill-tag">API Integration</span>
         </div>
@@ -1657,6 +1682,7 @@
           <span class="skill-tag">SerpAPI</span>
           <span class="skill-tag">Telegram Bot</span>
           <span class="skill-tag">Web Scraping</span>
+          <span class="skill-tag">Data Ingestion</span>
           <span class="skill-tag">Automation</span>
         </div>
       </div>
@@ -2005,7 +2031,7 @@
       <button class="ai-chip" type="button" data-question="Ceritakan profil Rinaldi">Profil</button>
       <button class="ai-chip" type="button" data-question="Apa skill utama Rinaldi?">Skill</button>
       <button class="ai-chip" type="button" data-question="Project terbaik apa yang pernah dibuat?">Project</button>
-      <button class="ai-chip" type="button" data-question="Apakah Rinaldi cocok untuk Data Analyst?">Data Analyst</button>
+      <button class="ai-chip" type="button" data-question="Apakah Rinaldi cocok untuk Data Engineer?">Data Engineer</button>
       <button class="ai-chip" type="button" data-question="Buat ringkasan untuk recruiter">Recruiter Summary</button>
       <button class="ai-chip" type="button" data-question="Buat roadmap pengembangan Rinaldi">Roadmap</button>
       <button class="ai-chip" type="button" data-question="Bagaimana cara menghubungi Rinaldi?">Kontak</button>
@@ -2070,19 +2096,19 @@
   const aiInput = document.getElementById('aiInput');
 
   let assistantMode = 'visitor';
-  let lastRoleName = 'data analyst';
+  let lastRoleName = 'data engineer';
 
   const portfolioKnowledge = {
     identity: {
       name: 'Rinaldi Hamzah',
-      title: 'Machine Learning, Data Analysis & Backend Automation',
+      title: 'Aspiring Data Engineer, Machine Learning & Backend Automation',
       location: 'Yogyakarta, Indonesia',
       education: 'S1 Teknik Informatika, Universitas Teknologi Yogyakarta',
       gpa: '3.32'
     },
     skills: {
       ml: ['Naive Bayes', 'SVM', 'MLP', 'Scikit-learn', 'TF-IDF', 'Ensemble Learning'],
-      data: ['Data cleaning', 'Tokenizing', 'Stopword removal', 'Stemming', 'Evaluation metrics', 'Dashboard insight'],
+      data: ['Data cleaning', 'ETL pipeline', 'Data ingestion', 'Tokenizing', 'Stopword removal', 'Stemming', 'Evaluation metrics', 'Dashboard insight'],
       web: ['Python', 'Flask', 'Django', 'HTML/CSS', 'JavaScript', 'MySQL'],
       automation: ['SerpAPI', 'Telegram Bot', 'Web scraping', 'API Integration', 'Automation'],
       support: ['Windows/Linux', 'DNS', 'Subnetting', 'Troubleshooting', 'IP Addressing']
@@ -2127,6 +2153,7 @@
   };
 
   const roleProfiles = {
+    'data engineer': ['data', 'engineer', 'pipeline', 'etl', 'ingestion', 'scraping', 'api', 'mysql', 'database', 'automation'],
     'data analyst': ['data', 'analysis', 'analyst', 'cleaning', 'dashboard', 'metric', 'visualisasi', 'sql', 'mysql'],
     'machine learning developer': ['machine', 'learning', 'ml', 'model', 'naive', 'svm', 'lstm', 'nlp', 'tf-idf'],
     'backend developer': ['backend', 'flask', 'api', 'mysql', 'automation', 'database', 'server'],
@@ -2140,15 +2167,15 @@
       keys: ['recruiter', 'hr', 'ringkasan', 'summary', 'hire', 'rekrut'],
       section: '#contact',
       confidence: 'High',
-      html: '<strong>Recruiter summary:</strong><ul><li>Rinaldi adalah kandidat junior yang kuat di area Machine Learning, Data Analysis, dan Flask-based backend.</li><li>Punya project end-to-end: scraping data, NLP preprocessing, model classification, dashboard, database, dan Telegram notification.</li><li>Cocok untuk role Junior ML Developer, Data Analyst, Backend Automation, atau Fullstack Web Developer.</li></ul>',
-      followups: ['Buat pitch 30 detik', 'Cocok untuk Data Analyst?', 'Tampilkan project terbaik']
+      html: '<strong>Recruiter summary:</strong><ul><li>Rinaldi adalah kandidat junior yang kuat untuk arah Data Engineering karena punya pengalaman scraping/API, preprocessing, MySQL, Flask backend, dan dashboard.</li><li>Punya project end-to-end: ingestion data Google Maps, NLP preprocessing, model classification, database, dashboard, dan Telegram notification.</li><li>Cocok untuk role Junior Data Engineer, Backend Automation, Junior ML Developer, atau Data Analyst dengan fokus pipeline data.</li></ul>',
+      followups: ['Buat pitch 30 detik', 'Cocok untuk Data Engineer?', 'Tampilkan project terbaik']
     },
     {
       id: 'profile',
       keys: ['profil', 'tentang', 'siapa', 'bio', 'rinaldi'],
       section: '#hero',
       confidence: 'High',
-      html: '<strong>Profil singkat:</strong> Rinaldi Hamzah adalah mahasiswa S1 Teknik Informatika UTY yang fokus pada Machine Learning, Data Analysis, Fullstack Web Development, dan Backend Automation. Portfolio ini menonjolkan kemampuan membangun solusi dari data sampai aplikasi.',
+      html: '<strong>Profil singkat:</strong> Rinaldi Hamzah adalah mahasiswa S1 Teknik Informatika UTY yang sedang mengarah ke Junior Data Engineer, dengan bekal Machine Learning, Data Analysis, Flask backend, MySQL, API integration, dan automation. Portfolio ini menonjolkan kemampuan membangun alur dari pengambilan data sampai aplikasi.',
       followups: ['Skill utama apa?', 'Buat pitch recruiter', 'Lihat pendidikan']
     },
     {
@@ -2156,7 +2183,7 @@
       keys: ['skill', 'keahlian', 'tools', 'teknologi', 'stack', 'python', 'flask'],
       section: '#skills',
       confidence: 'High',
-      html: '<strong>Skill map:</strong><ul><li><strong>ML/NLP:</strong> Naive Bayes, SVM, LSTM, CNN, TF-IDF, Scikit-learn.</li><li><strong>Data Analysis:</strong> cleaning, preprocessing, metric evaluation, insight dashboard.</li><li><strong>Web/Backend:</strong> Python, Flask, Django, MySQL, JavaScript.</li><li><strong>Automation:</strong> SerpAPI, Telegram Bot, web scraping, API integration.</li></ul>',
+      html: '<strong>Skill map:</strong><ul><li><strong>Data Engineering:</strong> data ingestion, web scraping/API, ETL pipeline, MySQL, database design.</li><li><strong>ML/NLP:</strong> Naive Bayes, SVM, LSTM, CNN, TF-IDF, Scikit-learn.</li><li><strong>Backend:</strong> Python, Flask, Django, API integration, JavaScript.</li><li><strong>Automation:</strong> SerpAPI, Telegram Bot, web scraping, workflow automation.</li></ul>',
       followups: ['Cocok role apa?', 'Project mana paling kuat?', 'Roadmap pengembangan']
     },
     {
@@ -2169,11 +2196,11 @@
     },
     {
       id: 'data',
-      keys: ['data', 'analysis', 'analisis', 'analyst', 'visualisasi', 'metric', 'metrik'],
+      keys: ['data', 'engineer', 'engineering', 'pipeline', 'etl', 'ingestion', 'analysis', 'analisis', 'analyst', 'visualisasi', 'metric', 'metrik'],
       section: '#projects',
       confidence: 'Medium-High',
-      html: '<strong>Data Analysis fit:</strong><ul><li>Kuat di preprocessing text: cleaning, tokenizing, stopword removal, stemming.</li><li>Memahami evaluasi model: accuracy, precision, recall, F1-score, MAE, MSE.</li><li>Punya pengalaman dashboard Flask untuk menyajikan insight dari data review hotel.</li><li>Tambahan yang bagus berikutnya: SQL analytics, Excel/Power BI/Tableau, dan storytelling dashboard.</li></ul>',
-      followups: ['Buat roadmap Data Analyst', 'Skill gap apa?', 'Buat pitch Data Analyst']
+      html: '<strong>Data Engineer fit:</strong><ul><li>Kuat di alur data end-to-end: scraping/API, cleaning, preprocessing, penyimpanan MySQL, dan dashboard Flask.</li><li>Terbiasa menghubungkan data mentah menjadi output yang bisa dipakai untuk model, insight, dan notifikasi.</li><li>Punya fondasi Python, Flask, MySQL, API integration, dan automation yang relevan untuk Junior Data Engineer.</li><li>Tambahan yang bagus berikutnya: SQL analytics lebih dalam, Docker, scheduler workflow, dan cloud database.</li></ul>',
+      followups: ['Buat roadmap Data Engineer', 'Skill gap apa?', 'Buat pitch Data Engineer']
     },
     {
       id: 'architecture',
@@ -2188,8 +2215,8 @@
       keys: ['roadmap', 'belajar', 'pengembangan', 'improve', 'upgrade', 'next'],
       section: '#skills',
       confidence: 'Advisory',
-      html: '<strong>Roadmap pengembangan:</strong><ul><li><strong>Data Analyst:</strong> SQL analytics, Power BI/Tableau, statistik dasar, dashboard storytelling.</li><li><strong>ML Developer:</strong> model deployment, experiment tracking, feature engineering, model monitoring.</li><li><strong>Backend:</strong> REST API design, auth, testing, Docker, deployment cloud.</li><li><strong>Portfolio:</strong> tambah link demo, screenshot dashboard, dan README teknis tiap project.</li></ul>',
-      followups: ['Skill gap untuk Data Analyst', 'Buat prioritas 30 hari', 'Cocok role apa?']
+      html: '<strong>Roadmap pengembangan:</strong><ul><li><strong>Data Engineer:</strong> SQL analytics, ETL pipeline, workflow scheduler, Docker, cloud database, dan data warehouse dasar.</li><li><strong>ML Developer:</strong> model deployment, experiment tracking, feature engineering, model monitoring.</li><li><strong>Backend:</strong> REST API design, auth, testing, Docker, deployment cloud.</li><li><strong>Portfolio:</strong> tambah link demo, screenshot dashboard, dan README teknis tiap project.</li></ul>',
+      followups: ['Skill gap untuk Data Engineer', 'Buat prioritas 30 hari', 'Cocok role apa?']
     },
     {
       id: 'contact',
@@ -2289,16 +2316,16 @@
 
     if (normalized.includes('cocok role') || normalized.includes('role apa') || normalized.includes('posisi apa')) {
       return {
-        html: `${modePrefix()}<strong>Role ranking paling cocok:</strong><ul><li><strong>1. Junior Machine Learning Developer</strong> - kuat karena ada NLP, Naive Bayes, SVM, LSTM, TF-IDF.</li><li><strong>2. Data Analyst</strong> - cocok karena ada preprocessing, evaluasi metrik, MySQL, dan dashboard insight.</li><li><strong>3. Backend Automation Developer</strong> - cocok karena Flask, MySQL, API integration, SerpAPI, Telegram Bot.</li><li><strong>4. Fullstack Web Developer</strong> - cukup cocok, terutama untuk Flask/Django dashboard.</li></ul>`,
+        html: `${modePrefix()}<strong>Role ranking paling cocok:</strong><ul><li><strong>1. Junior Data Engineer</strong> - kuat karena ada scraping/API, preprocessing, MySQL, Flask backend, dan automation.</li><li><strong>2. Backend Automation Developer</strong> - cocok karena Flask, MySQL, API integration, SerpAPI, Telegram Bot.</li><li><strong>3. Junior Machine Learning Developer</strong> - kuat karena ada NLP, Naive Bayes, SVM, LSTM, TF-IDF.</li><li><strong>4. Data Analyst</strong> - tetap relevan karena ada preprocessing, evaluasi metrik, MySQL, dan dashboard insight.</li></ul>`,
         section: '#skills',
         confidence: 'Advisory',
-        followups: ['Cocok untuk Data Analyst?', 'Cocok untuk Backend Developer?', 'Buat pitch recruiter']
+        followups: ['Cocok untuk Data Engineer?', 'Cocok untuk Backend Developer?', 'Buat pitch recruiter']
       };
     }
 
     if (normalized.includes('pesan recruiter') || normalized.includes('email recruiter') || normalized.includes('message recruiter')) {
       return {
-        html: `${modePrefix()}<strong>Contoh pesan ke recruiter:</strong><br>Halo, saya Rinaldi Hamzah, mahasiswa Informatika yang fokus pada Machine Learning, Data Analysis, dan Backend Automation. Saya memiliki pengalaman membangun sistem sentiment monitoring end-to-end menggunakan Python, Flask, MySQL, SerpAPI, model Naive Bayes/SVM, dan Telegram Bot. Saya tertarik untuk berkontribusi pada posisi junior yang berkaitan dengan data, machine learning, atau backend automation. Terima kasih.`,
+        html: `${modePrefix()}<strong>Contoh pesan ke recruiter:</strong><br>Halo, saya Rinaldi Hamzah, mahasiswa Informatika yang sedang mengarah ke Junior Data Engineer. Saya memiliki pengalaman membangun sistem sentiment monitoring end-to-end menggunakan Python, Flask, MySQL, SerpAPI, preprocessing data, dan Telegram Bot. Saya tertarik membantu tim membangun pipeline data, otomasi ingestion dari API/scraping, serta data backend yang siap dipakai untuk analisis maupun aplikasi. Terima kasih.`,
         section: '#contact',
         confidence: 'High',
         followups: ['Buat versi lebih singkat', 'Lihat kontak', 'Buat pitch 30 detik']
@@ -2307,16 +2334,16 @@
 
     if (normalized.includes('30 hari') || normalized.includes('prioritas')) {
       return {
-        html: `${modePrefix()}<strong>Prioritas 30 hari:</strong><ul><li>Minggu 1: rapikan README project utama, tambahkan arsitektur dan screenshot dashboard.</li><li>Minggu 2: perdalam SQL analytics: join, CTE, aggregate, window function.</li><li>Minggu 3: buat mini dashboard Data Analysis dengan insight visual.</li><li>Minggu 4: deploy demo Flask dan tambahkan link demo di portfolio.</li></ul>`,
+        html: `${modePrefix()}<strong>Prioritas 30 hari:</strong><ul><li>Minggu 1: rapikan README project utama, tambahkan arsitektur pipeline dan screenshot dashboard.</li><li>Minggu 2: perdalam SQL analytics: join, CTE, aggregate, window function.</li><li>Minggu 3: buat mini ETL pipeline dari API publik ke MySQL dengan logging sederhana.</li><li>Minggu 4: deploy demo Flask dan tambahkan link demo di portfolio.</li></ul>`,
         section: '#projects',
         confidence: 'Advisory',
-        followups: ['Skill gap apa?', 'Buat roadmap Data Analyst', 'Project apa yang perlu ditambah?']
+        followups: ['Skill gap apa?', 'Buat roadmap Data Engineer', 'Project apa yang perlu ditambah?']
       };
     }
 
     if (normalized.includes('project apa yang perlu') || normalized.includes('project ditambah')) {
       return {
-        html: `${modePrefix()}<strong>Project tambahan yang paling menaikkan nilai portfolio:</strong><ul><li><strong>Data Analyst Dashboard:</strong> dataset publik, SQL analysis, visualisasi KPI, insight bisnis.</li><li><strong>ML Deployment Demo:</strong> endpoint Flask untuk prediksi sentimen dengan form input.</li><li><strong>Automation Case Study:</strong> scraping, cleaning, penyimpanan database, notifikasi Telegram, log error.</li></ul>`,
+        html: `${modePrefix()}<strong>Project tambahan yang paling menaikkan nilai portfolio:</strong><ul><li><strong>Mini Data Pipeline:</strong> ambil data dari API publik, transformasi terjadwal, simpan ke MySQL, dan tampilkan status pipeline.</li><li><strong>ML Deployment Demo:</strong> endpoint Flask untuk prediksi sentimen dengan form input.</li><li><strong>Automation Case Study:</strong> scraping, cleaning, penyimpanan database, notifikasi Telegram, log error.</li></ul>`,
         section: '#projects',
         confidence: 'Advisory',
         followups: ['Buat prioritas 30 hari', 'Cocok role apa?', 'Jelaskan arsitektur project']
@@ -2325,7 +2352,7 @@
 
     if (normalized.includes('pitch') || normalized.includes('30 detik')) {
       return {
-        html: `${modePrefix()}<strong>Pitch 30 detik:</strong> Saya Rinaldi Hamzah, mahasiswa Informatika yang fokus pada Machine Learning, Data Analysis, dan Backend Automation. Saya pernah membangun sistem analisis sentimen hotel end-to-end menggunakan Python, Flask, MySQL, SerpAPI, model Naive Bayes/SVM, dan Telegram Bot. Saya tertarik membantu tim mengubah data menjadi insight dan aplikasi yang bisa dipakai.`,
+        html: `${modePrefix()}<strong>Pitch 30 detik:</strong> Saya Rinaldi Hamzah, mahasiswa Informatika yang sedang mengarah ke Junior Data Engineer. Saya pernah membangun sistem analisis sentimen hotel end-to-end menggunakan Python, Flask, MySQL, SerpAPI, preprocessing data, dan Telegram Bot. Saya tertarik membantu tim membangun pipeline data dari ingestion sampai data siap dipakai untuk analisis, model, dan aplikasi.`,
         section: '#hero',
         confidence: 'High',
         followups: ['Buat versi recruiter', 'Cocok role apa?', 'Tampilkan project']
@@ -2334,10 +2361,10 @@
 
     if (normalized.includes('gap') || normalized.includes('kekurangan')) {
       return {
-        html: `${modePrefix()}<strong>Skill gap yang paling bernilai ditambah:</strong><ul><li>SQL analytics lebih dalam: join, window function, CTE, query optimization.</li><li>Dashboard BI: Power BI atau Tableau untuk role Data Analyst.</li><li>Deployment: Docker, cloud deploy, environment variable, testing.</li><li>Portfolio proof: screenshot dashboard, live demo, README teknis, dan dataset sample.</li></ul>`,
+        html: `${modePrefix()}<strong>Skill gap yang paling bernilai ditambah:</strong><ul><li>SQL analytics lebih dalam: join, window function, CTE, query optimization.</li><li>Data pipeline: ETL terjadwal, logging, validasi data, dan error handling.</li><li>Deployment: Docker, cloud deploy, environment variable, testing.</li><li>Portfolio proof: diagram pipeline, screenshot dashboard, live demo, README teknis, dan dataset sample.</li></ul>`,
         section: '#skills',
         confidence: 'Advisory',
-        followups: ['Buat roadmap 30 hari', 'Cocok untuk Data Analyst?', 'Project apa yang perlu ditambah?']
+        followups: ['Buat roadmap 30 hari', 'Cocok untuk Data Engineer?', 'Project apa yang perlu ditambah?']
       };
     }
 
@@ -2355,10 +2382,10 @@
     if (bestMatch) return bestMatch;
 
     return {
-      html: `${modePrefix()}Saya belum menemukan jawaban spesifik, tapi saya bisa membantu menganalisis profil Rinaldi dari beberapa sudut: skill, project, Data Analysis, role fit, recruiter summary, roadmap belajar, pengalaman, dan kontak.`,
+      html: `${modePrefix()}Saya belum menemukan jawaban spesifik, tapi saya bisa membantu menganalisis profil Rinaldi dari beberapa sudut: skill, project, Data Engineering, role fit, recruiter summary, roadmap belajar, pengalaman, dan kontak.`,
       section: '#skills',
       confidence: 'Low-Medium',
-      followups: ['Apa skill utama Rinaldi?', 'Buat ringkasan recruiter', 'Cocok untuk Data Analyst?']
+      followups: ['Apa skill utama Rinaldi?', 'Buat ringkasan recruiter', 'Cocok untuk Data Engineer?']
     };
   }
 
@@ -2388,7 +2415,7 @@
         html: '<strong>Halo, saya Portfolio Assistant Rinaldi.</strong> Saya bisa bantu seperti mini recruiter analyst: menjelaskan skill, menilai kecocokan role, merangkum project, membuat pitch, dan memberi roadmap pengembangan.',
         section: '#skills',
         confidence: 'High',
-        followups: ['Buat ringkasan recruiter', 'Cocok untuk Data Analyst?', 'Project terbaik apa?']
+        followups: ['Buat ringkasan recruiter', 'Cocok untuk Data Engineer?', 'Project terbaik apa?']
       });
       aiMessages.dataset.started = 'true';
     }
