@@ -670,13 +670,15 @@
     flex-direction: column;
   }
 
-  .project-card:first-child {
+  .project-card:first-child,
+  .project-card--data {
     grid-column: span 2;
     background: linear-gradient(135deg, rgba(91,141,239,0.1) 0%, rgba(255,122,89,0.07) 100%);
     border-color: rgba(91,141,239,0.24);
   }
 
-  .project-card:first-child .project-inner {
+  .project-card:first-child .project-inner,
+  .project-card--data .project-inner {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
@@ -770,6 +772,110 @@
 
   .tech-tag.green { background: rgba(53,208,186,0.1); border-color: rgba(53,208,186,0.18); color: var(--accent3); }
   .tech-tag.pink { background: rgba(255,122,89,0.1); border-color: rgba(255,122,89,0.18); color: var(--accent2); }
+
+  .project-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+    margin-top: 1.25rem;
+  }
+
+  .project-link {
+    display: inline-flex;
+    align-items: center;
+    color: var(--text);
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 0.45rem 0.8rem;
+    border: 1px solid rgba(91,141,239,0.32);
+    border-radius: 6px;
+    background: rgba(91,141,239,0.09);
+    transition: background 0.25s, border-color 0.25s;
+  }
+
+  .project-link:hover { background: rgba(91,141,239,0.18); border-color: var(--accent); }
+
+  .project-carousel {
+    display: flex;
+    gap: 0.8rem;
+    overflow-x: auto;
+    padding: 0.2rem 0.1rem 0.85rem;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(91,141,239,0.5) transparent;
+    cursor: grab;
+    user-select: none;
+  }
+
+  .project-carousel.dragging { cursor: grabbing; scroll-snap-type: none; }
+
+  .project-shot {
+    flex: 0 0 70px;
+    scroll-snap-align: start;
+    padding: 0;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 9px;
+    overflow: hidden;
+    background: var(--bg);
+    cursor: pointer;
+    transition: transform 0.25s, border-color 0.25s;
+  }
+
+  .project-shot:hover,
+  .project-shot:focus-visible { transform: translateY(-3px); border-color: var(--accent3); }
+
+  .project-shot img {
+    display: block;
+    width: 70px;
+    height: 130px;
+    object-fit: cover;
+    object-position: top;
+  }
+
+  .image-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    display: grid;
+    place-items: center;
+    padding: 1.5rem;
+    background: rgba(5, 7, 11, 0.88);
+    backdrop-filter: blur(10px);
+  }
+
+  .image-modal[hidden] { display: none; }
+
+  .image-modal-content {
+    position: relative;
+    width: min(100%, 1050px);
+    max-height: calc(100vh - 3rem);
+  }
+
+  .image-modal img {
+    display: block;
+    max-width: 100%;
+    max-height: calc(100vh - 7rem);
+    margin: 0 auto;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.16);
+  }
+
+  .image-modal-caption { margin-top: 0.8rem; color: var(--text2); text-align: center; }
+
+  .image-modal-close {
+    position: absolute;
+    top: 0.7rem;
+    right: 0.7rem;
+    width: 38px;
+    height: 38px;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 50%;
+    background: rgba(13,15,20,0.86);
+    color: var(--text);
+    cursor: pointer;
+    font-size: 1.4rem;
+  }
 
   /* PROJECT VISUAL */
   .project-visual {
@@ -1446,8 +1552,8 @@
     .section-wrapper { padding: 4rem 1.5rem; }
     .projects-grid { grid-template-columns: 1fr; }
     .project-card { grid-column: span 1 !important; }
-    .project-card:first-child { grid-column: span 1; }
-    .project-card:first-child .project-inner { grid-template-columns: 1fr; }
+    .project-card:first-child, .project-card--data { grid-column: span 1; }
+    .project-card:first-child .project-inner, .project-card--data .project-inner { grid-template-columns: 1fr; }
     .exp-grid { grid-template-columns: 1fr; }
     .exp-nav { display: none; }
     .edu-card { grid-template-columns: 1fr; }
@@ -1530,7 +1636,7 @@
       </div>
       <div class="hero-btns">
         <a href="#projects" class="btn-primary">Lihat Proyek →</a>
-        <a href="mailto:rinaldi.hamzah07@gmail.com?subject=Kesempatan%20Junior%20Data%20Engineer" class="btn-outline">✉ Diskusi Role Data Engineer</a>
+        <a href="mailto:rinaldihamzah37@gmail.com?subject=Kesempatan%20Junior%20Data%20Engineer" class="btn-outline">✉ Diskusi Role Data Engineer</a>
       </div>
       <div class="hero-stats">
         <div class="stat-item">
@@ -1564,7 +1670,7 @@
           </div>
           <div class="info-row">
             <div class="info-icon">✉️</div>
-            <a href="mailto:rinaldi.hamzah07@gmail.com">rinaldi.hamzah07@gmail.com</a>
+            <a href="mailto:rinaldihamzah37@gmail.com">rinaldihamzah37@gmail.com</a>
           </div>
           <div class="info-row">
             <div class="info-icon">📱</div>
@@ -1709,7 +1815,7 @@
   <div class="section-wrapper">
     <div class="section-label">Portofolio</div>
     <h2 class="section-title reveal">Proyek yang<br>Telah Dibangun</h2>
-    <p class="section-subtitle reveal">Koleksi proyek nyata yang menggabungkan machine learning, web development, dan analisis data.</p>
+    <p class="section-subtitle reveal">Koleksi proyek nyata yang menggabungkan data engineering, machine learning, web development, dan analisis data.</p>
 
     <div class="projects-grid">
 
@@ -1743,11 +1849,11 @@
           </div>
           <div class="project-visual">
             <div class="project-images" style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 18px; justify-content: flex-start;">
-              <img src="img/dashboard.jpg" alt="Dashboard sentiment monitoring" width="70" loading="lazy" decoding="async" style="width: 70px; height: auto; border-radius: 8px; border: 1px solid #222; background: #181b22;">
-              <img src="img/analitik.jpg" alt="Halaman analitik sentimen" width="70" loading="lazy" decoding="async" style="width: 70px; height: auto; border-radius: 8px; border: 1px solid #222; background: #181b22;">
-              <img src="img/subs.jpg" alt="Halaman subscription monitoring" width="70" loading="lazy" decoding="async" style="width: 70px; height: auto; border-radius: 8px; border: 1px solid #222; background: #181b22;">
-              <img src="img/notif.jpg" alt="Notifikasi Telegram Bot" width="70" loading="lazy" decoding="async" style="width: 70px; height: auto; border-radius: 8px; border: 1px solid #222; background: #181b22;">
-              <img src="img/histori.jpg" alt="Histori review hotel" width="70" loading="lazy" decoding="async" style="width: 70px; height: auto; border-radius: 8px; border: 1px solid #222; background: #181b22;">
+              <img src="img/monitoring/dashboard.jpg" alt="Dashboard sentiment monitoring" width="70" loading="lazy" decoding="async" style="width: 70px; height: auto; border-radius: 8px; border: 1px solid #222; background: #181b22;">
+              <img src="img/monitoring/analitik.jpg" alt="Halaman analitik sentimen" width="70" loading="lazy" decoding="async" style="width: 70px; height: auto; border-radius: 8px; border: 1px solid #222; background: #181b22;">
+              <img src="img/monitoring/subs.jpg" alt="Halaman subscription monitoring" width="70" loading="lazy" decoding="async" style="width: 70px; height: auto; border-radius: 8px; border: 1px solid #222; background: #181b22;">
+              <img src="img/monitoring/notif.jpg" alt="Notifikasi Telegram Bot" width="70" loading="lazy" decoding="async" style="width: 70px; height: auto; border-radius: 8px; border: 1px solid #222; background: #181b22;">
+              <img src="img/monitoring/histori.jpg" alt="Histori review hotel" width="70" loading="lazy" decoding="async" style="width: 70px; height: auto; border-radius: 8px; border: 1px solid #222; background: #181b22;">
             </div>
             <div class="code-line"><span class="cm"># Sentiment Analysis Pipeline</span></div>
             <div class="code-line"><span class="kw">from</span> sklearn <span class="kw">import</span> naive_bayes</div>
@@ -1765,6 +1871,59 @@
           </div>
         </div>
       </div>
+
+      <!-- PROJECT 2: DATA ENGINEERING -->
+      <article class="project-card project-card--data reveal">
+        <div class="project-inner">
+          <div>
+            <div class="project-meta">
+              <span class="project-role">★ Data Engineering Project</span>
+              <span class="project-period">End-to-End Pipeline</span>
+            </div>
+            <h3 class="project-title">Arunika Beauty<br>Sales Data Pipeline</h3>
+            <p class="project-desc">
+              Pipeline data penjualan e-commerce end-to-end yang menyatukan transaksi Shopee, Tokopedia, website, dan toko offline menjadi warehouse PostgreSQL untuk dashboard analitik bisnis.
+            </p>
+            <ul class="project-highlights">
+              <li>Ekstraksi, validasi kualitas data, transformasi, dan incremental loading berbasis checksum serta hash per baris</li>
+              <li>Data warehouse dengan star schema: raw, staging, warehouse, dan audit untuk lineage yang dapat ditelusuri</li>
+              <li>Orkestrasi pipeline terjadwal dengan Apache Airflow serta dashboard Flask untuk KPI, filter, ekspor CSV, dan status pipeline</li>
+              <li>Containerisasi layanan PostgreSQL, dashboard, pipeline, Airflow, dan pgAdmin menggunakan Docker Compose</li>
+            </ul>
+            <div class="project-tech">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">PostgreSQL</span>
+              <span class="tech-tag green">Apache Airflow</span>
+              <span class="tech-tag green">ETL</span>
+              <span class="tech-tag">Flask</span>
+              <span class="tech-tag pink">Docker</span>
+              <span class="tech-tag">SQLAlchemy</span>
+            </div>
+            <div class="project-links">
+              <a class="project-link" href="https://github.com/RinaldiHamzah/arunika-sales-pepeline-end-to-end" target="_blank" rel="noopener">Lihat Repository ↗</a>
+            </div>
+          </div>
+          <div class="project-visual">
+            <div class="project-carousel" aria-label="Galeri tampilan dashboard Arunika Beauty. Geser untuk melihat gambar lain.">
+              <button class="project-shot" type="button" data-image="img/arunika/dashboard.png" data-caption="Dashboard KPI Arunika Beauty" aria-label="Buka Dashboard KPI Arunika Beauty">
+                <img src="img/arunika/dashboard.png" alt="Dashboard KPI Arunika Beauty" loading="lazy" decoding="async">
+              </button>
+              <button class="project-shot" type="button" data-image="img/arunika/transaksi.png" data-caption="Halaman transaksi Arunika Beauty" aria-label="Buka halaman transaksi Arunika Beauty">
+                <img src="img/arunika/transaksi.png" alt="Halaman transaksi Arunika Beauty" loading="lazy" decoding="async">
+              </button>
+              <button class="project-shot" type="button" data-image="img/arunika/return.png" data-caption="Halaman analitik retur Arunika Beauty" aria-label="Buka halaman analitik retur Arunika Beauty">
+                <img src="img/arunika/return.png" alt="Halaman analitik retur Arunika Beauty" loading="lazy" decoding="async">
+              </button>
+              <button class="project-shot" type="button" data-image="img/arunika/pengaturan.png" data-caption="Halaman pengaturan pipeline Arunika Beauty" aria-label="Buka halaman pengaturan pipeline Arunika Beauty">
+                <img src="img/arunika/pengaturan.png" alt="Halaman pengaturan pipeline Arunika Beauty" loading="lazy" decoding="async">
+              </button>
+            </div>
+            <div class="code-line" style="margin-top: 1rem;"><span class="cm"># CSV → validation → PostgreSQL warehouse → analytics</span></div>
+            <div class="code-line"><span class="kw">schedule</span> = <span class="str">"0 13 * * *"</span></div>
+            <div class="code-line"><span class="cm"># Airflow orchestration · audit · data lineage</span></div>
+          </div>
+        </div>
+      </article>
 
       <!-- PROJECT 2 -->
       <div class="project-card reveal">
@@ -1927,7 +2086,7 @@
         <div class="edu-details">
           <div class="edu-detail">
             <span class="edu-detail-icon">📅</span>
-            2022 – Sekarang
+            2022 – 2026
           </div>
           <div class="edu-detail">
             <span class="edu-detail-icon">📍</span>
@@ -1942,7 +2101,7 @@
 
       <div class="edu-stats">
         <div class="edu-stat-card">
-          <div class="edu-stat-num" style="color: var(--accent);">3.32</div>
+          <div class="edu-stat-num" style="color: var(--accent);">3.35</div>
           <div class="edu-stat-label">IPK</div>
         </div>
         <div class="edu-stat-card">
@@ -1976,7 +2135,7 @@
         Terbuka untuk peluang kerja, kolaborasi proyek, atau sekadar berdiskusi tentang machine learning dan teknologi.
       </p>
       <div class="contact-links">
-        <a href="mailto:rinaldi.hamzah07@gmail.com" class="contact-link primary" aria-label="Email" title="Email">
+        <a href="mailto:rinaldihamzah37@gmail.com" class="contact-link primary" aria-label="Email" title="Email">
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <path d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Zm9 8.08L5.45 7H4v.8l8 7.42 8-7.42V7h-1.45L12 13.08Z"/>
           </svg>
@@ -2007,6 +2166,14 @@
   <div class="footer-logo">RH<span>.</span></div>
   <div class="footer-text" id="footer-location">Yogyakarta, Indonesia</div>
 </footer>
+
+<div class="image-modal" id="imageModal" role="dialog" aria-modal="true" aria-labelledby="imageModalCaption" hidden>
+  <div class="image-modal-content">
+    <button class="image-modal-close" id="imageModalClose" type="button" aria-label="Tutup gambar">×</button>
+    <img id="imageModalImage" src="" alt="">
+    <p class="image-modal-caption" id="imageModalCaption"></p>
+  </div>
+</div>
 
 <!-- AI ASSISTANT -->
 <div class="ai-assistant" id="aiAssistant">
@@ -2088,6 +2255,71 @@
     });
   });
 
+  const imageModal = document.getElementById('imageModal');
+  const imageModalImage = document.getElementById('imageModalImage');
+  const imageModalCaption = document.getElementById('imageModalCaption');
+  const imageModalClose = document.getElementById('imageModalClose');
+  let lastImageTrigger = null;
+
+  function closeImageModal() {
+    imageModal.hidden = true;
+    if (lastImageTrigger) lastImageTrigger.focus();
+  }
+
+  document.querySelectorAll('.project-shot').forEach(shot => {
+    shot.addEventListener('click', () => {
+      lastImageTrigger = shot;
+      imageModalImage.src = shot.dataset.image;
+      imageModalImage.alt = shot.dataset.caption;
+      imageModalCaption.textContent = shot.dataset.caption;
+      imageModal.hidden = false;
+      imageModalClose.focus();
+    });
+  });
+
+  imageModalClose.addEventListener('click', closeImageModal);
+  imageModal.addEventListener('click', event => {
+    if (event.target === imageModal) closeImageModal();
+  });
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && !imageModal.hidden) closeImageModal();
+  });
+
+  document.querySelectorAll('.project-carousel').forEach(carousel => {
+    let pointerStartX = 0;
+    let initialScrollLeft = 0;
+    let dragged = false;
+
+    carousel.addEventListener('pointerdown', event => {
+      pointerStartX = event.clientX;
+      initialScrollLeft = carousel.scrollLeft;
+      dragged = false;
+      carousel.setPointerCapture(event.pointerId);
+      carousel.classList.add('dragging');
+    });
+
+    carousel.addEventListener('pointermove', event => {
+      if (!carousel.hasPointerCapture(event.pointerId)) return;
+      const distance = event.clientX - pointerStartX;
+      if (Math.abs(distance) > 5) dragged = true;
+      carousel.scrollLeft = initialScrollLeft - distance;
+    });
+
+    carousel.addEventListener('pointerup', event => {
+      if (carousel.hasPointerCapture(event.pointerId)) carousel.releasePointerCapture(event.pointerId);
+      carousel.classList.remove('dragging');
+      window.setTimeout(() => { dragged = false; }, 0);
+    });
+
+    carousel.addEventListener('pointercancel', () => carousel.classList.remove('dragging'));
+    carousel.addEventListener('click', event => {
+      if (dragged) {
+        event.preventDefault();
+        event.stopPropagation();
+      }
+    }, true);
+  });
+
   const aiAssistant = document.getElementById('aiAssistant');
   const aiToggle = document.getElementById('aiToggle');
   const aiClose = document.getElementById('aiClose');
@@ -2108,12 +2340,20 @@
     },
     skills: {
       ml: ['Naive Bayes', 'SVM', 'MLP', 'Scikit-learn', 'TF-IDF', 'Ensemble Learning'],
-      data: ['Data cleaning', 'ETL pipeline', 'Data ingestion', 'Tokenizing', 'Stopword removal', 'Stemming', 'Evaluation metrics', 'Dashboard insight'],
-      web: ['Python', 'Flask', 'Django', 'HTML/CSS', 'JavaScript', 'MySQL'],
+      data: ['Data cleaning', 'ETL pipeline', 'Data ingestion', 'Data validation', 'Data warehouse', 'PostgreSQL', 'Apache Airflow', 'Tokenizing', 'Stopword removal', 'Stemming', 'Evaluation metrics', 'Dashboard insight'],
+      web: ['Python', 'Flask', 'Django', 'HTML/CSS', 'JavaScript', 'MySQL', 'Docker'],
       automation: ['SerpAPI', 'Telegram Bot', 'Web scraping', 'API Integration', 'Automation'],
       support: ['Windows/Linux', 'DNS', 'Subnetting', 'Troubleshooting', 'IP Addressing']
     },
     projects: [
+      {
+        name: 'Arunika Beauty Sales Data Pipeline',
+        role: 'Data Engineering Project',
+        period: 'End-to-End Pipeline',
+        stack: ['Python', 'PostgreSQL', 'Apache Airflow', 'ETL', 'Flask', 'Docker'],
+        impact: 'Menggabungkan empat sumber transaksi ke warehouse PostgreSQL dengan data quality check, audit, lineage, dashboard analitik, dan orkestrasi terjadwal.',
+        section: '#projects'
+      },
       {
         name: 'Sentiment Monitoring Hotel Review System',
         role: 'Featured Project',
@@ -2140,7 +2380,7 @@
       }
     ],
     contact: {
-      email: 'rinaldi.hamzah07@gmail.com',
+      email: 'rinaldihamzah37@gmail.com',
       github: 'github.com/RinaldiHamzah',
       linkedin: 'linkedin.com/in/rinaldi-hamzah-253842389',
       phone: '081374131407'
@@ -2153,7 +2393,7 @@
   };
 
   const roleProfiles = {
-    'data engineer': ['data', 'engineer', 'pipeline', 'etl', 'ingestion', 'scraping', 'api', 'mysql', 'database', 'automation'],
+    'data engineer': ['data', 'engineer', 'pipeline', 'etl', 'ingestion', 'airflow', 'postgresql', 'warehouse', 'scraping', 'api', 'mysql', 'database', 'automation'],
     'data analyst': ['data', 'analysis', 'analyst', 'cleaning', 'dashboard', 'metric', 'visualisasi', 'sql', 'mysql'],
     'machine learning developer': ['machine', 'learning', 'ml', 'model', 'naive', 'svm', 'lstm', 'nlp', 'tf-idf'],
     'backend developer': ['backend', 'flask', 'api', 'mysql', 'automation', 'database', 'server'],
@@ -2167,7 +2407,7 @@
       keys: ['recruiter', 'hr', 'ringkasan', 'summary', 'hire', 'rekrut'],
       section: '#contact',
       confidence: 'High',
-      html: '<strong>Recruiter summary:</strong><ul><li>Rinaldi adalah kandidat junior yang kuat untuk arah Data Engineering karena punya pengalaman scraping/API, preprocessing, MySQL, Flask backend, dan dashboard.</li><li>Punya project end-to-end: ingestion data Google Maps, NLP preprocessing, model classification, database, dashboard, dan Telegram notification.</li><li>Cocok untuk role Junior Data Engineer, Backend Automation, Junior ML Developer, atau Data Analyst dengan fokus pipeline data.</li></ul>',
+      html: '<strong>Recruiter summary:</strong><ul><li>Rinaldi adalah kandidat junior yang kuat untuk arah Data Engineering karena punya pengalaman ETL, data quality check, PostgreSQL warehouse, Apache Airflow, Docker, Flask backend, dan dashboard.</li><li>Punya proyek sales pipeline end-to-end: ingestion empat sumber transaksi, validasi, transformasi, star schema, audit/lineage, orkestrasi, dan analytics dashboard.</li><li>Cocok untuk role Junior Data Engineer, Backend Automation, Junior ML Developer, atau Data Analyst dengan fokus pipeline data.</li></ul>',
       followups: ['Buat pitch 30 detik', 'Cocok untuk Data Engineer?', 'Tampilkan project terbaik']
     },
     {
@@ -2188,10 +2428,10 @@
     },
     {
       id: 'projects',
-      keys: ['project', 'proyek', 'portfolio', 'sentiment', 'hotel', 'telegram', 'serpapi'],
+      keys: ['project', 'proyek', 'portfolio', 'arunika', 'sales', 'pipeline', 'sentiment', 'hotel', 'telegram', 'serpapi'],
       section: '#projects',
       confidence: 'High',
-      html: '<strong>Project paling kuat:</strong> Sentiment Monitoring Hotel Review System. Nilainya tinggi karena end-to-end: scraping Google Maps dengan SerpAPI, preprocessing NLP, klasifikasi Naive Bayes/SVM, penyimpanan MySQL, dashboard Flask, dan notifikasi Telegram Bot.',
+      html: '<strong>Project paling kuat untuk Data Engineering:</strong> Arunika Beauty Sales Data Pipeline. Sistem ini menyatukan empat sumber transaksi, menjalankan validasi dan transformasi, memuat PostgreSQL star schema, menyimpan audit/lineage, mengorkestrasi proses dengan Airflow, lalu menyajikan dashboard Flask. Untuk ML/NLP, Sentiment Monitoring Hotel Review System juga menjadi proyek unggulan.',
       followups: ['Jelaskan arsitektur project', 'Apa impact project?', 'Cocok untuk ML Developer?']
     },
     {
@@ -2223,7 +2463,7 @@
       keys: ['kontak', 'email', 'linkedin', 'github', 'telepon', 'hubungi', 'wa', 'whatsapp'],
       section: '#contact',
       confidence: 'High',
-      html: '<strong>Kontak Rinaldi:</strong><ul><li>Email: rinaldi.hamzah07@gmail.com</li><li>GitHub: github.com/RinaldiHamzah</li><li>LinkedIn: linkedin.com/in/rinaldi-hamzah-253842389</li><li>Telepon: 081374131407</li></ul>',
+      html: '<strong>Kontak Rinaldi:</strong><ul><li>Email: rinaldihamzah37@gmail.com</li><li>GitHub: github.com/RinaldiHamzah</li><li>LinkedIn: linkedin.com/in/rinaldi-hamzah-253842389</li><li>Telepon: 081374131407</li></ul>',
       followups: ['Buat pesan recruiter', 'Lihat GitHub', 'Buka kontak']
     },
     {

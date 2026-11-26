@@ -8,7 +8,7 @@
 
 - 💬 Ask me about ** Let’s connect: I’m always open to discussing SQL queries, Pandas, or data storytelling challenges.**
 
-- 📫 How to reach me **rinaldi.hamzah07@gmail.com**
+- 📫 How to reach me **rinaldihamzah37@gmail.com**
 
 <h3 align="left">Connect with me:</h3>
 
